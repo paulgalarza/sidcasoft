@@ -5,10 +5,6 @@
 @stop
 
 @section('content')
-    <div class="title">
-        <h2><small>Inicio de Sesión</small></h2>    
-    </div>
-    
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -20,7 +16,7 @@
                     <input type="text" class="form-control" placeholder="Email" required autofocus name="usuario">
                     <input type="password" class="form-control" placeholder="Password" required name="clave">
                     <button class="btn btn-lg btn-primary btn-block" type="submit">
-                        Iniciar sesión
+                        Sign in
                     </button>
                     @if(Session::has('mensaje_error'))
                     <div class="alert alert-danger">{{ Session::get('mensaje_error') }}</div>

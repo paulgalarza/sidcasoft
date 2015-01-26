@@ -13,22 +13,19 @@ class CreateUsersTable extends Migration {
 	 public function up()
     {
         
-        Schema::create('usuarios', function($tabla){
+        Schema::create('usuarios', function($table){
  
-            $tabla->increments('id');
-            $tabla->string('username', 60);
-            $tabla->string('password', 100);
-            $tabla->timestamps();
+            $table->increments('idUsuario');
+            $table->string('usuario');
+            $table->string('password', 100);
+            $table->string('nombre', 60);
+            $table->boolean('estatus');
+            $table->string('domicilio',100);
+            $table->string('telefono',15);
+            $table->string('remember_token',100);
+            $table->timestamps();
  
         });
- 
-        DB::table('usuarios')->insert(
-            array(
-                'username' => 'admin',
-                'password' => Hash::make('123456')
-            )
-        );
- 
     }
  
     /**
