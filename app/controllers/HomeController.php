@@ -2,6 +2,8 @@
 
 class HomeController extends BaseController {
 
+	protected $layout = 'layouts.master';
+
 	/*
 	|--------------------------------------------------------------------------
 	| Default Home Controller
@@ -17,12 +19,12 @@ class HomeController extends BaseController {
 
 	public function getIndex()
 	{
-		return View::make('hello');
+		return View::make('home');
 	}
 
 	public function showWelcome()
 	{
-		return View::make('hello');
+		return View::make('home');
 	}
 
 

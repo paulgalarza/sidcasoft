@@ -13,7 +13,7 @@ class AuthController extends BaseController {
 		}
 
 		//Mostramos la vista login.blade.php
-		return View::make('login.index');
+		return View::make('login');
 	}
 
 	public function postLogin()
@@ -28,7 +28,7 @@ class AuthController extends BaseController {
 			return Redirect::to('/');
 		}
 
-		return Redirect::to('login/index')
+		return Redirect::to('login')
 					->with('mensaje_error', 'Clave incorrecta')
 					->withInput();
 	}
@@ -36,7 +36,7 @@ class AuthController extends BaseController {
 	public function logOut()
     {
         Auth::logout();
-        return Redirect::to('login/index')
+        return Redirect::to('login')
                     ->with('mensaje_error', 'Tu sesión ha sido cerrada.');
     }
 }
