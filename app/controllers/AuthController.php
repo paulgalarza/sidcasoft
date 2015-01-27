@@ -23,7 +23,7 @@ class AuthController extends BaseController {
 			'password'=>Input::get('clave')
 		);	
 		
-		if(Auth::attempt($userdata, Input::get('remember_me',0)))
+		if(Auth::attempt($userdata, true))
 		{
 			return Redirect::to('/');
 		}

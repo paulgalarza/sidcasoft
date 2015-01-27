@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration {
             $table->boolean('estatus');
             $table->string('domicilio',100);
             $table->string('telefono',15);
+            $table->int('idTipoUsuario');
             $table->string('remember_token',100);
             $table->timestamps();
  

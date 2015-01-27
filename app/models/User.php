@@ -72,4 +72,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	    return 'remember_token';
 	}
 
+	public function hasAccess($page)
+	{
+
+		$page = Page::where('descripcion', $page)->firstOrFail();
+		$count = DB::table('pagesbyuser')
+					->where('idTipoUsuario','=',$this->idTipoUsuario)
+					->where('idPage','=',$page->idPage)
+					->count();
+		return $count > 0;
+	}
 }

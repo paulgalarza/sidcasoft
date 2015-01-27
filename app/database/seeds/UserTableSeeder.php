@@ -9,7 +9,8 @@ class UserTableSeeder extends Seeder {
             'nombre'=> 'paul',
             'estatus' => 1,
             'domicilio' => 'Tecnologico de Culiacan',
-            'telefono' => '6677112233'
+            'telefono' => '6677112233',
+            'idTipoUsuario'=>'1'
         ));
     }
 }
