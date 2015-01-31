@@ -1,17 +1,26 @@
 /*-----------------------------------------------------
 | 						LAYOUT STYLES
 |------------------------------------------------------*/
-
+body{
+	background: none repeat scroll 0% 0% rgb(247, 247, 247);
+	font-family: 'Roboto', sans-serif;
+}
 .header{
 	text-align: center;
-	background-color: #F7F7F7;
+	background-color: rgb(247, 247, 247);
 }
-body{
-	font-family: 'Open Sans', sans-serif;
+.content{
+	background: white;
+	padding-top: 20px;
+}
+.margin-0{
+	margin: 0px;
 }
 /*---------------------------------------
-|				@LOGIN STYLE
+|				@LAYOUT STYLE
 |---------------------------------------*/
+
+
 
 /*-----------------------------------------------------
 | 						LOGIN STYLES
@@ -98,3 +107,13 @@ margin-top: 10px;
 /*---------------------------------------
 |				@LOGIN STYLE
 |---------------------------------------*/
+
+
+
+/*-----------------------------------------------------
+| 						HOME STYLE
+|------------------------------------------------------*/
+.text-primary
+{
+	color:#008292;
+}

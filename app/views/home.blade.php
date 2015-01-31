@@ -1,7 +1,8 @@
 @extends('layouts.master')
 @section('content')
-<section class="container">
-
+<section class="container" ng-controller="homeController as home">
+	<h1 class="text-primary">Catalogo de proyecto</h1>
+	<hr>
 		<article id="home">
 				<p id="txt_descripcion">Catálogo de proyectos</p>
 				<div class="row">
