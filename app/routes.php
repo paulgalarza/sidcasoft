@@ -18,8 +18,18 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::get('proyectos/search',function()
 	{
-		return Response::json(Proyecto::all());
+		return Response::json(
+			DB::table('proyecto')
+				->join('cliente','proyecto.idCliente','=','cliente.idCliente')
+				->select('proyecto.*','cliente.nombre AS nombreCliente')
+				->get()
+		);
 	});
 
-	Route::get('proyectos','ProyectosController@getIndex');
+	Route::get('proyectos',function(){
+		return View::make('proyectos/index');
+	});
+	Route::delete('proyectos/{id}',function(){
+		return 'Hello world';
+	});
 });

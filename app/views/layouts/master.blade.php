@@ -41,10 +41,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"> <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="configuracion.html">Cambiar contraseña</a></li>
-<<<<<<< HEAD
                                     <li><a onclick="cerrarSesion()">Cerrar sesión</a></li>
-=======
->>>>>>> FETCH_HEAD
                                 </ul>
                             </li>
                         </ul>
@@ -65,23 +62,8 @@
     {{ HTML::script('js/bootstrap.js'); }}
     {{ HTML::script('js/angular.min.js'); }}
     {{ HTML::script('js/app.js'); }}
-<<<<<<< HEAD
     {{ HTML::script('js/sweet-alert.min.js'); }}
     {{ HTML::script('js/master.js'); }}
-
-    <!--IMPORT SMART TABLE-->
-    {{ HTML::script('js/smart-table/smart-table.module.js'); }}
-    {{ HTML::script('js/smart-table/stPagination.js'); }}
-    {{ HTML::script('js/smart-table/stPipe.js'); }}
-    {{ HTML::script('js/smart-table/stSearch.js'); }}
-    {{ HTML::script('js/smart-table/stSelectRow.js'); }}
-    {{ HTML::script('js/smart-table/stSort.js'); }}
-    {{ HTML::script('js/smart-table/stTable.js'); }}
-    <!-- END IMPORT SAMRT TABLE -->
-
-=======
     {{ HTML::script('js/smart-table.min.js'); }}
-    
->>>>>>> FETCH_HEAD
     </body>
 </html>
