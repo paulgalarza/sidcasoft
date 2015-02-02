@@ -6,6 +6,7 @@
         {{ HTML::style('css/bootstrap.css'); }}
         {{ HTML::style('css/style.css'); }}
         {{ HTML::style('css/sweet-alert.css'); }}
+        {{ HTML::style('css/font-awesome.min.css'); }}
         <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     </head>
     <body ng-app="app">
@@ -42,9 +43,6 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href='{{URL::to('/password')}}'>Cambiar contraseña</a></li>
                                     <li><a href='#' onclick="cerrarSesion()">Cerrar sesión</a></li>
-                                    <li><a href="configuracion.html">Cambiar contraseña</a></li>
-                                    <li><a onclick="cerrarSesion()">Cerrar sesión</a></li>
-
                                 </ul>
                             </li>
                         </ul>
@@ -57,8 +55,48 @@
             @yield('content')
         </div>
         <div class="footer">
-            <div class="container" >
-                <h2>SIDCASOFT</h2>
+            <div>
+            <div class="container" style=" max-width:700px; padding:40px;" >
+                <div class="col-md-3">
+                    <span class="gray-color">SIDCASOFT</span>
+                        <div style="padding-top:10px;">
+                            <a href=""> Home</a>
+                        </div>
+                        <div>
+                            <a href=""> Cobertura</a>
+                        </div>
+                </div>
+                <div class="col-md-3">
+                    <span class="gray-color">NOSOTROS</span>
+                        <div style="padding-top:10px;">
+                            <a href=""> Conócenos</a>
+                        </div>
+                        <div>
+                            <a href=""> Políticas</a>
+                        </div>
+                </div>
+                <div class="col-md-3">
+                    <span class="gray-color">AYUDA</span>
+                        <div style="padding-top:10px;">
+                            <a href=""> Soporte técnico</a>
+                        </div>
+                        <div>
+                            <a href=""> Contáctanos</a>
+                        </div>
+                </div>
+                <div class="col-md-3">
+                    <span class="gray-color">SOCIALES</span>
+                        <div style="padding-top:10px;">
+                            <a href="http://facebook.com"><i class="fa fa-facebook"></i> Facebook</a>
+                        </div>
+                        <div>
+                            <a href="http://twitter.com"><i class="fa fa-twitter"></i> Twitter</a>
+                        </div>
+                </div>
+            </div>
+            </div>
+            <div class="row" style="text-align:center;">
+                <a style="color:white;">Todos los derechos reservados</a>
             </div>
         </div>
     <script src="https://code.jquery.com/jquery.js"></script>
