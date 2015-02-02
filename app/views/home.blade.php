@@ -5,7 +5,7 @@
 	
 <section ng-controller="homeController as home">
 
-	<h1 class="text-primary">Catalogo de proyecto</h1>
+	<h1 class="text-primary">Catálogo de proyecto</h1>
 	<hr>
 		<div class="col-md-4">
 			<div class="scroll">

@@ -40,11 +40,9 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"> <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="configuracion.html">Cambiar contraseña</a></li>
-<<<<<<< HEAD
-                                    <li><a onclick="cerrarSesion()">Cerrar sesión</a></li>
-=======
->>>>>>> FETCH_HEAD
+                                    <li><a href='{{URL::to('/password')}}'>Cambiar contraseña</a></li>
+                                    <li><a href='#' onclick="cerrarSesion()">Cerrar sesión</a></li>
+
                                 </ul>
                             </li>
                         </ul>

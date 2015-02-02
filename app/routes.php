@@ -13,8 +13,14 @@ Route::group(array('before' => 'auth'), function()
     {
         return View::make('home');
     });
+
     Route::get('logout', 'AuthController@logOut');
 
+    Route::get('password', function(){
+
+    	return View::make('profile/index');
+    });
+    Route::post('password','AuthController@newPassword');
 
 	Route::get('proyectos/search',function()
 	{
