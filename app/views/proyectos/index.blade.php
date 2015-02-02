@@ -4,7 +4,7 @@
 <h1 class="text-primary">Proyectos</h1>
 <hr>
 <div ng-controller="proyectosController as ctlr">
-	<div ng-hide="formProyecto">
+	<div ng-hide="formProyecto" style="position: relative;" class="animate-grid">
 		<table st-table="displayedCollection" st-safe-src="proyectos" class="table table-striped">
 			<thead>
 			<tr>
@@ -50,7 +50,7 @@
 	</div>
 
 
-	<div class="formulario" ng-show="formProyecto">
+	<div class="formulario item-animate" ng-show="formProyecto" >
 		<div class="col-md-7">
 			<div class="form-group row">
 				<label class="control-label col-md-4" ng-model="proyecto.nombre">Nombre del Proyecto:</label>			
@@ -74,11 +74,13 @@
 			<div class="form-group row">
 				<label class="control-label col-md-4">Cliente:</label>	
 				<div class="col-md-8">
-					<input class="form-control" rows="4">	
-					
+					<input type="text" ng-model="asyncSelected" placeholder="Locations loaded via $http" typeahead="address for address in getClientes($viewValue)" typeahead-loading="loadingLocations" class="form-control">
+    				<i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>	
 				</div>
 
 			</div>
+			@{{asyncSelected}}
+			@{{clientes}}
 		</div>
 	</div>
 

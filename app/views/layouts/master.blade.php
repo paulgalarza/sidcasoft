@@ -42,9 +42,6 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href='{{URL::to('/password')}}'>Cambiar contraseña</a></li>
                                     <li><a href='#' onclick="cerrarSesion()">Cerrar sesión</a></li>
-                                    <li><a href="configuracion.html">Cambiar contraseña</a></li>
-                                    <li><a onclick="cerrarSesion()">Cerrar sesión</a></li>
-
                                 </ul>
                             </li>
                         </ul>
@@ -59,6 +56,7 @@
         <div class="footer">
             <div class="container" >
                 <h2>SIDCASOFT</h2>
+                <a href="#" >prueba</a>
             </div>
         </div>
     <script src="https://code.jquery.com/jquery.js"></script>

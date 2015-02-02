@@ -43,4 +43,12 @@ Route::group(array('before' => 'auth'), function()
 				->get()
 		);
 	});
+
+	Route::get('clientes/search/{nombre?}',function($nombre = ''){
+		return Response::json(
+			DB::table('cliente')
+				->where('nombre','like','%'.$nombre.'%')
+				->get()
+		);
+	});
 });

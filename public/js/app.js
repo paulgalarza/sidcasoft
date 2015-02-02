@@ -32,6 +32,25 @@
 	    $scope.displayedCollection = [];
 	    $scope.formProyecto = 0;
 	    $scope.proyecto = {};
+	    $scope.asyncSelected = undefined;
+	    
+
+	    $scope.getClientes = function(nombre){
+	    	/*return dataService.getClientes(nombre).then(function(clientes){
+	    		$scope.clientes = clientes;
+	    		return $scope.clientes;
+	    	});*/
+			return $http.get('http://maps.googleapis.com/maps/api/geocode/json', {
+			      params: {
+			        address: nombre,
+			        sensor: false
+			      }
+			    }).then(function(response){
+			      return response.data.results.map(function(item){
+			        return item.formatted_address;
+			      });
+			    });
+	    }
 
 	    $scope.newProyecto = function(){
 	    	$scope.proyecto = {
@@ -78,7 +97,6 @@
 	    		});
 	    }
 	    $scope.editProyecto = function(idProyecto){
-	    	debugger
 	    	$scope.setProyecto(idProyecto);
 	    	$scope.formProyecto = 1;
 	    }
@@ -99,7 +117,17 @@
 				//addProyecto:addProyecto,
 				getProyectos:getProyectos,
 				removeProyecto:removeProyecto,
+				getClientes:getClientes,
 			});
+
+			function getClientes(nombre){
+				var request = $http({
+					method:'get',
+					url:'clientes/search/'+nombre,
+					params:{},
+				});
+				return request.then(handleSuccess,handleError);
+			}
 
 			function getProyectos(){
 				var request = $http({
