@@ -23,13 +23,13 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li class="active">
-                                <a href="home.html"><span class="glyphicon glyphicon-home"></span></a>
+                                <a href="{{URL::to('/')}}"><span class="glyphicon glyphicon-home"></span></a>
                             </li>
 
                             @foreach ( DB::table('pages')->where('navbar', '1')->get() as $page)
                                 @if(Auth::user()->hasAccess($page->descripcion))
                                     <li>
-                                        <a href='{{$page->descripcion}}'>
+                                        <a href='{{strtolower($page->descripcion)}}'>
                                             <strong>{{$page->descripcion}}</strong>
                                         </a>
                                     </li>
@@ -41,7 +41,10 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"> <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="configuracion.html">Cambiar contraseña</a></li>
+<<<<<<< HEAD
                                     <li><a onclick="cerrarSesion()">Cerrar sesión</a></li>
+=======
+>>>>>>> FETCH_HEAD
                                 </ul>
                             </li>
                         </ul>
@@ -53,10 +56,16 @@
         <div class="container content">
             @yield('content')
         </div>
+        <div class="footer">
+            <div class="container" >
+                <h2>SIDCASOFT</h2>
+            </div>
+        </div>
     <script src="https://code.jquery.com/jquery.js"></script>
     {{ HTML::script('js/bootstrap.js'); }}
     {{ HTML::script('js/angular.min.js'); }}
     {{ HTML::script('js/app.js'); }}
+<<<<<<< HEAD
     {{ HTML::script('js/sweet-alert.min.js'); }}
     {{ HTML::script('js/master.js'); }}
 
@@ -70,5 +79,9 @@
     {{ HTML::script('js/smart-table/stTable.js'); }}
     <!-- END IMPORT SAMRT TABLE -->
 
+=======
+    {{ HTML::script('js/smart-table.min.js'); }}
+    
+>>>>>>> FETCH_HEAD
     </body>
 </html>
