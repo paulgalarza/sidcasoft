@@ -5,6 +5,7 @@
         <title>@section('title')@show</title>
         {{ HTML::style('css/bootstrap.css'); }}
         {{ HTML::style('css/style.css'); }}
+        {{ HTML::style('css/sweet-alert.css'); }}
         <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     </head>
     <body ng-app="app">
@@ -40,7 +41,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"> <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="configuracion.html">Cambiar contraseña</a></li>
-                                    <li><a  data-toggle="modal" data-target="#sesión">Cerrar sesión</a></li>
+                                    <li><a onclick="cerrarSesion()">Cerrar sesión</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -56,6 +57,8 @@
     {{ HTML::script('js/bootstrap.js'); }}
     {{ HTML::script('js/angular.min.js'); }}
     {{ HTML::script('js/app.js'); }}
+    {{ HTML::script('js/sweet-alert.min.js'); }}
+    {{ HTML::script('js/master.js'); }}
 
     <!--IMPORT SMART TABLE-->
     {{ HTML::script('js/smart-table/smart-table.module.js'); }}
