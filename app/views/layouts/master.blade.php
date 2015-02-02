@@ -42,6 +42,8 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href='{{URL::to('/password')}}'>Cambiar contraseña</a></li>
                                     <li><a href='#' onclick="cerrarSesion()">Cerrar sesión</a></li>
+                                    <li><a href="configuracion.html">Cambiar contraseña</a></li>
+                                    <li><a onclick="cerrarSesion()">Cerrar sesión</a></li>
 
                                 </ul>
                             </li>
@@ -63,23 +65,8 @@
     {{ HTML::script('js/bootstrap.js'); }}
     {{ HTML::script('js/angular.min.js'); }}
     {{ HTML::script('js/app.js'); }}
-<<<<<<< HEAD
     {{ HTML::script('js/sweet-alert.min.js'); }}
     {{ HTML::script('js/master.js'); }}
-
-    <!--IMPORT SMART TABLE-->
-    {{ HTML::script('js/smart-table/smart-table.module.js'); }}
-    {{ HTML::script('js/smart-table/stPagination.js'); }}
-    {{ HTML::script('js/smart-table/stPipe.js'); }}
-    {{ HTML::script('js/smart-table/stSearch.js'); }}
-    {{ HTML::script('js/smart-table/stSelectRow.js'); }}
-    {{ HTML::script('js/smart-table/stSort.js'); }}
-    {{ HTML::script('js/smart-table/stTable.js'); }}
-    <!-- END IMPORT SAMRT TABLE -->
-
-=======
     {{ HTML::script('js/smart-table.min.js'); }}
-    
->>>>>>> FETCH_HEAD
     </body>
 </html>

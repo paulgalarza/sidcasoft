@@ -46,7 +46,6 @@
                             <div class="divider"></div>
                         </fieldset>
                     {{ Form::close() }}
-                    <a href="{{URL::to('/')}}"><button class="btn btn-default pull-right">Cancelar</button></a>
             </div>
 		</div>		
 </section>

@@ -12,7 +12,7 @@
 				<table st-table="displayedCollection" st-safe-src="proyectos" class="table table-striped">
 					<thead>
 					<tr>
-						<th st-sort="firstName">Proyectos</th>
+						<th st-sort="nombre">Proyectos</th>
 					</tr>
 					<tr>
 						<th><input st-search="" class="form-control" placeholder="buscar proyecto..." type="text"/></th>
