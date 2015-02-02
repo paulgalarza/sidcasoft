@@ -51,4 +51,11 @@ Route::group(array('before' => 'auth'), function()
 				->get()
 		);
 	});
+
+	Route::get('procesos/search',function(){
+		return Response::json(
+			DB::table('procesos')
+				->get()
+		);
+	});
 });

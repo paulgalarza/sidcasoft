@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <section>
-		<div class="panel panel-default" style="max-width:500px; margin:0 auto;">
+		<div class="panel panel-default" style="max-width:500px; margin:60 auto;">
 			<div class="panel-heading"><strong>
 				<span class="glyphicon glyphicon-th"></span> Cambio de Contraseña</strong>
 			</div>

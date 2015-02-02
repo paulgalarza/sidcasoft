@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('content')
-
-<h1 class="text-primary">Proyectos</h1>
-<hr>
 <div ng-controller="proyectosController as ctlr">
+<h1 class="text-primary"><a href="#" ng-click="formProyecto = 0">Proyectos <i class="fa fa-arrow-circle-o-left" ng-show="formProyecto"></i></a></h1>
+<hr>
+<div>
 	<div ng-hide="formProyecto" style="position: relative;" class="animate-grid">
 		<table st-table="displayedCollection" st-safe-src="proyectos" class="table table-striped">
 			<thead>
@@ -53,15 +53,15 @@
 	<div class="formulario item-animate" ng-show="formProyecto" >
 		<div class="col-md-7">
 			<div class="form-group row">
-				<label class="control-label col-md-4" ng-model="proyecto.nombre">Nombre del Proyecto:</label>			
+				<label class="control-label col-md-4">Nombre del Proyecto:</label>			
 				<div class="col-md-8">
-					<input class="form-control" type="text">	
+					<input class="form-control" type="text" ng-model="proyecto.nombre">	
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4" ng-model="proyecto.titulo">Titulo del proyecto:</label>	
+				<label class="control-label col-md-4">Titulo del proyecto:</label>	
 				<div class="col-md-8">
-					<input class="form-control" type="text">	
+					<input class="form-control" type="text" ng-model="proyecto.titulo">	
 				</div>
 			</div>
 			<div class="form-group row">
@@ -74,15 +74,65 @@
 			<div class="form-group row">
 				<label class="control-label col-md-4">Cliente:</label>	
 				<div class="col-md-8">
-					<input type="text" ng-model="asyncSelected" placeholder="Locations loaded via $http" typeahead="address for address in getClientes($viewValue)" typeahead-loading="loadingLocations" class="form-control">
+					<input type="text" ng-model="cliente" placeholder="" typeahead="address for address in getClientes($viewValue)" typeahead-loading="loadingLocations" class="form-control">
     				<i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>	
 				</div>
-
 			</div>
-			@{{asyncSelected}}
-			@{{clientes}}
+			<div class="form-group row">
+				<label class="control-label col-md-4">Costo:</label>	
+				<div class="col-md-8">
+					<input class="form-control" type="number" ng-model="proyecto.costoTotal">	
+				</div>
+			</div>
+		</div>
+		<div class="col-md-5">
+			<div class="form-group row">
+				<label class="control-label col-md-4">ID Proyecto:</label>	
+				<div class="col-md-8">
+					<input class="form-control" type="text" ng-model="proyecto.idProyecto" disabled="disabled">	
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="control-label col-md-4">Fecha inicio:</label>	
+				<div class="col-md-8">
+					<p class="input-group">
+						<input class="form-control" is-open="opened" datepicker-options="dateOptions" ng-required="true" ng-model="proyecto.fechaInicio" datepicker-popup="@{{format}}" min-date="minDate">	
+						<span class="input-group-btn">
+	                		<button style="height: 34px;" type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+	              		</span>
+	              	</p>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="control-label col-md-4">Fecha fin:</label>	
+				<div class="col-md-8">
+					<p class="input-group">
+						<input class="form-control" is-open="opened" datepicker-options="dateOptions" ng-required="true" ng-model="proyecto.fechaFin" datepicker-popup="@{{format}}" min-date="minDate">	
+						<span class="input-group-btn">
+	                		<button style="height: 34px;" type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+	              		</span>
+	              	</p>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="control-label col-md-4">Proceso:</label>	
+				<div class="col-md-8">
+					<select class="form-control" ng-model="idProceso"ng-options="p.idProcesos as p.nombre for p in procesos"></select>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="control-label col-md-4">Estatus:</label>	
+				<div class="col-md-8">
+					<select class="form-control" ng-model="idProceso"ng-options="p.idProcesos as p.nombre for p in procesos"></select>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<button class="btn btn-default pull-right">Cancelar</button>
+			<button class="btn btn-success pull-right" style="margin-right:5px;">Guardar</button>
 		</div>
 	</div>
 
+</div>
 </div>
 @stop

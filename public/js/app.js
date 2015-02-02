@@ -33,23 +33,28 @@
 	    $scope.formProyecto = 0;
 	    $scope.proyecto = {};
 	    $scope.asyncSelected = undefined;
-	    
+	    $scope.format = 'dd-MMMM-yyyy';
+	    $scope.minDate = new Date();
+	    $scope.dateOptions = {
+			formatYear: 'yy',
+		    startingDay: 1
+		};
+		$scope.procesos = [];
+		$scope.idProceso = 0;
+
+	    $scope.open = function($event) {
+		    $event.preventDefault();
+		    $event.stopPropagation();
+
+		    $scope.opened = true;
+		};
 
 	    $scope.getClientes = function(nombre){
-	    	/*return dataService.getClientes(nombre).then(function(clientes){
-	    		$scope.clientes = clientes;
-	    		return $scope.clientes;
-	    	});*/
-			return $http.get('http://maps.googleapis.com/maps/api/geocode/json', {
-			      params: {
-			        address: nombre,
-			        sensor: false
-			      }
-			    }).then(function(response){
-			      return response.data.results.map(function(item){
-			        return item.formatted_address;
-			      });
+	    	return dataService.getClientes(nombre).then(function(clientes){
+	    		return clientes.map(function(cliente){
+			        return cliente.nombre;
 			    });
+	    	});
 	    }
 
 	    $scope.newProyecto = function(){
@@ -57,7 +62,8 @@
 	    		idProyecto:0,
 	    		nombre:'',
 	    		titulo:'',
-
+	    		fechaInicio: null,
+	    		costoTotal:0,
 	    	};
 	    	$scope.formProyecto = 1;
 	    }
@@ -105,7 +111,9 @@
 	    	$scope.proyectos = proyectos;
 			$scope.displayedCollection = [].concat(proyectos);
 	    });
-		
+		dataService.getProcesos().then(function(procesos){
+			$scope.procesos = procesos;
+		});
 
 	});
 
@@ -118,7 +126,17 @@
 				getProyectos:getProyectos,
 				removeProyecto:removeProyecto,
 				getClientes:getClientes,
+				getProcesos:getProcesos,
 			});
+
+			function getProcesos(){
+				var request = $http({
+					method:'get',
+					url:'procesos/search',
+					params:{}
+				});
+				return request.then(handleSuccess,handleError);
+			}
 
 			function getClientes(nombre){
 				var request = $http({

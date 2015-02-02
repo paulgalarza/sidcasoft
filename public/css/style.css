@@ -35,10 +35,10 @@ div.scroll{
   overflow-x:hidden;
 }
 .footer{
-	height: 200px;
-	background: #008292;
+	height: 180px;
+	background: #2D3134;
 	color: white;
-	text-align: center;
+	text-align: left;
 }
 
 .img-header{
@@ -65,6 +65,9 @@ div.scroll{
  .animate-grid{
  	webkit-transition: left 2s;
     transition: left 2s;
+ }
+ .dropdown-menu.ng-isolate-scope{
+ 	width: 93%;
  }
 /*---------------------------------------
 |				@LAYOUT STYLE
