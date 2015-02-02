@@ -39,6 +39,22 @@ div.scroll{
 	color: white;
 	text-align: center;
 }
+.img-header{
+	width: 100%;
+	max-width: 1280px;
+}
+@media (max-width: 1080px) {
+   .img-header {
+     display: none;
+   }
+ }
+ .control-label{
+ 	text-align: right;
+ 	color:#444;
+ }
+ .gray-color{
+ 	color:#888;
+ }
 /*---------------------------------------
 |				@LAYOUT STYLE
 |---------------------------------------*/

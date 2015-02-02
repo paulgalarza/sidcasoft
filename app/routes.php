@@ -35,7 +35,12 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('proyectos',function(){
 		return View::make('proyectos/index');
 	});
-	Route::delete('proyectos/{id}',function(){
-		return 'Hello world';
+	Route::delete('proyectos/{id}',function($id){
+		return Response::json(
+			DB::table('proyecto')
+				->join('cliente','proyecto.idCliente','=','cliente.idCliente')
+				->select('proyecto.*','cliente.nombre AS nombreCliente')
+				->get()
+		);
 	});
 });

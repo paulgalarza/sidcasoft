@@ -10,7 +10,7 @@
     </head>
     <body ng-app="app">
         <div class="header">
-            {{ HTML::image('images/headertec.jpg') }}
+            {{ HTML::image('images/headertec.jpg','SIDCASOFT',array('class'=>'img-header')) }}
             @if (Auth::check())
                 <!-- Navigation bar -->
                 <nav class="navbar navbar-inverse navbar-static-top margin-0" role="navigation">
@@ -68,5 +68,7 @@
     {{ HTML::script('js/sweet-alert.min.js'); }}
     {{ HTML::script('js/master.js'); }}
     {{ HTML::script('js/smart-table.min.js'); }}
+    {{ HTML::script('js/ui-bootstrap-0.12.0.min.js'); }}
+    
     </body>
 </html>

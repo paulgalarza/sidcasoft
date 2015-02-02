@@ -1,26 +1,19 @@
 (function(){
 
-	var app = angular.module('app',['smart-table']);
+	var app = angular.module('app',['smart-table','ui.bootstrap']);
 
-	app.controller('homeController',function($http,$scope){
+	app.controller('homeController',function($http,$scope,dataService){
 
 		$scope.proyectos = [];
 		$scope.displayedCollection = [];
 		$scope.proyecto = {};
 
-		$http(
-			{
-			   	method: 'GET',
-			   	url: 'proyectos/search',
-			    data : {},
-			    headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
-			}).
-			success(function(data, status, headers, config) {
-				$scope.proyectos = data;
-				$scope.displayedCollection = [].concat(data);
-				$scope.proyecto = data[0];
-			}
-		);
+
+		dataService.getProyectos().then(function(proyectos){
+			$scope.proyectos = proyectos;
+			$scope.displayedCollection = [].concat(proyectos);
+			$scope.proyecto = proyectos[0];
+		});
 
 		$scope.setProyecto = function(idProyecto){
 			$scope.proyecto = $scope.proyectos.filter(function (el) {
@@ -32,11 +25,32 @@
 		};
 	});
 
-	app.controller('proyectosController', function($http,$scope){
+	app.controller('proyectosController', function($http,$scope,dataService){
 	    
-		$scope.itemsByPage=3;
+		$scope.itemsByPage=10;
 	    $scope.proyectos = [];
 	    $scope.displayedCollection = [];
+	    $scope.formProyecto = 0;
+	    $scope.proyecto = {};
+
+	    $scope.newProyecto = function(){
+	    	$scope.proyecto = {
+	    		idProyecto:0,
+	    		nombre:'',
+	    		titulo:'',
+
+	    	};
+	    	$scope.formProyecto = 1;
+	    }
+	    $scope.setProyecto = function(idProyecto){
+			$scope.proyecto = $scope.proyectos.filter(function (el) {
+												return el.idProyecto == idProyecto;
+											})[0];
+		};
+		$scope.isSelected = function(idProyecto){
+			return $scope.proyecto.idProyecto == idProyecto;
+		};
+
 	    $scope.getStatus = function(Status){
 	    	return Status ? 'Activo' : 'Cancelado';
 	    }
@@ -51,41 +65,75 @@
 	    		confirmButtonText: "Si, eliminalo!",
 	    		closeOnConfirm: false },
 	    		function(){
-
-	    			$http(
-						{
-						   	method: 'DELETE',
-						   	url: 'proyectos/1',
-						    data : {},
-						    headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
-						}).
-						success(function(data, status, headers, config) {
-							/*$scope.proyectos = data;
-							$scope.displayedCollection = [].concat(data);*/
-							swal("Deleted!", "El proyecto a sido eliminado.", "success"); 
-							alert(data);
-						}
-					);
-
-
-	    			
+	    			dataService.removeProyecto(idProyecto).then(function(proyectos){
+	    				$scope.proyectos = proyectos;
+						$scope.displayedCollection = [].concat(proyectos);
+						swal({
+							title:"Eliminado!",
+							text:"El proyecto a sido eliminado.",
+							type:"success",
+							timer:2000,
+						});
+	    			});
 	    		});
 	    }
+	    $scope.editProyecto = function(idProyecto){
+	    	debugger
+	    	$scope.setProyecto(idProyecto);
+	    	$scope.formProyecto = 1;
+	    }
 
-	    $http(
-			{
-			   	method: 'GET',
-			   	url: 'proyectos/search',
-			    data : {},
-			    headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
-			}).
-			success(function(data, status, headers, config) {
-				$scope.proyectos = data;
-				$scope.displayedCollection = [].concat(data);
-			}
-		);
+	    dataService.getProyectos().then(function(proyectos){
+	    	$scope.proyectos = proyectos;
+			$scope.displayedCollection = [].concat(proyectos);
+	    });
+		
 
 	});
+
+	app.service(
+		"dataService",
+		function($http,$q) {
+
+			return({
+				//addProyecto:addProyecto,
+				getProyectos:getProyectos,
+				removeProyecto:removeProyecto,
+			});
+
+			function getProyectos(){
+				var request = $http({
+					method:'get',
+					url:'proyectos/search',
+					params: {},
+				});
+				return (request.then(handleSuccess,handleError));
+			}
+			
+			function removeProyecto(id){
+				var request = $http({
+					method:'DELETE',
+					url:'proyectos/'+id,
+					params:{},
+				});
+				return (request.then(handleSuccess,handleError));
+			}
+
+			function handleError( response ) {
+
+                if (! angular.isObject( response.data ) ||
+                    ! response.data.message) {
+                    	return( $q.reject( "A ocurrido un error desconocido." ) );
+                }
+                
+                return( $q.reject( response.data.message ) );
+            }
+
+            function handleSuccess( response ) {
+                return( response.data );
+            }
+		}
+	)
 
 })();
 	

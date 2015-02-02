@@ -19,7 +19,7 @@
 					</tr>
 					</thead>
 					<tbody>
-					<tr class="table-row" ng-repeat="row in displayedCollection" ng-class="{'selected-row':isSelected(row.idProyecto)}" ng-click="setProyecto(row.idProyecto)">
+					<tr class="table-row" ng-repeat="row in displayedCollection" ng-class="{'selected-row':isSelected(row.idProyecto)}" ng-click="setProyecto(row.idProyecto)" >
 						<td>@{{row.nombre}}</td>
 					</tr>
 					</tbody>
