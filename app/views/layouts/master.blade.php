@@ -23,13 +23,13 @@
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li class="active">
-                                <a href="{{URL::to('/')}}"><span class="glyphicon glyphicon-home"></span></a>
+                            <li class="{{ Request::is('/') ? 'active' : ''}}">
+                                <a href="{{URL::to('/')}}" style="height:50px;"><span class="glyphicon glyphicon-home"></span></a>
                             </li>
 
                             @foreach ( DB::table('pages')->where('navbar', '1')->get() as $page)
                                 @if(Auth::user()->hasAccess($page->descripcion))
-                                    <li>
+                                    <li class="{{ Request::is(strtolower($page->descripcion)) ? 'active' : ''}}">
                                         <a href='{{strtolower($page->descripcion)}}'>
                                             <strong>{{$page->descripcion}}</strong>
                                         </a>
@@ -101,6 +101,7 @@
             
         </div>
     <script src="https://code.jquery.com/jquery.js"></script>
+    {{ HTML::script('js/jquery-2.1.3.min.js'); }}
     {{ HTML::script('js/bootstrap.js'); }}
     {{ HTML::script('js/angular.min.js'); }}
     {{ HTML::script('js/app.js'); }}

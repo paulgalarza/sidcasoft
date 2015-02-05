@@ -69,6 +69,28 @@ div.scroll{
  .dropdown-menu.ng-isolate-scope{
  	width: 93%;
  }
+ .formulario input.ng-invalid.ng-touched {
+    border-color: #a94442;
+  }
+
+ .formulario input.ng-valid.ng-touched {
+    border-color: #3c763d;
+  }
+  .formulario textarea.ng-invalid.ng-touched {
+    border-color: #a94442;
+  }
+
+ .formulario textarea.ng-valid.ng-touched {
+    border-color: #3c763d;
+  }
+
+  .formulario select.ng-invalid.ng-touched {
+    border-color: #a94442;
+  }
+
+ .formulario select.ng-valid.ng-touched {
+    border-color: #3c763d;
+  }
 /*---------------------------------------
 |				@LAYOUT STYLE
 |---------------------------------------*/

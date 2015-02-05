@@ -21,10 +21,6 @@
                     @if(Session::has('mensaje_error'))
                     <div class="alert alert-danger">{{ Session::get('mensaje_error') }}</div>
                     @endif
-                    <label class="checkbox pull-left">
-                    <input type="checkbox" value="remember-me" name="remember_me">
-                        Recordarme
-                    </label>
                     <a href="#" class="pull-right need-help">Ayuda? </a><span class="clearfix"></span>
                     {{ Form::close() }}
                 </div>

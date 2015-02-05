@@ -2,6 +2,10 @@
 
 	var app = angular.module('app',['smart-table','ui.bootstrap']);
 
+
+	/****************************************************
+	|					CONTROLLERS
+	*****************************************************/
 	app.controller('homeController',function($http,$scope,dataService){
 
 		$scope.proyectos = [];
@@ -35,25 +39,47 @@
 	    $scope.asyncSelected = undefined;
 	    $scope.format = 'dd-MMMM-yyyy';
 	    $scope.minDate = new Date();
-	    $scope.dateOptions = {
+		$scope.procesos = [];
+		$scope.recursos = [];
+		$scope.dateOptions = {
 			formatYear: 'yy',
 		    startingDay: 1
 		};
-		$scope.procesos = [];
-		$scope.idProceso = 0;
+		$scope.estatus = [
+			{status:1,descripcion:"Activo"},
+			{status:0,descripcion:"Inactivo"}
+		];
 
-	    $scope.open = function($event) {
+		$scope.removeRecurso = function(recurso){
+			$scope.proyecto.recursos.splice($scope.proyecto.recursos.indexOf(recurso));
+		};
+
+		$scope.addRecurso = function(recurso){
+			$scope.proyecto.recursos.push(recurso);
+			$scope.recurso = '';
+		}
+
+	    $scope.open = function($event ,option) {
 		    $event.preventDefault();
 		    $event.stopPropagation();
 
-		    $scope.opened = true;
+		    if(option)
+		    	$scope.openedInicio = true;
+		    else
+		    	$scope.openedFin = true;
 		};
 
 	    $scope.getClientes = function(nombre){
 	    	return dataService.getClientes(nombre).then(function(clientes){
-	    		return clientes.map(function(cliente){
-			        return cliente.nombre;
-			    });
+	    		return clientes;
+	    	});
+	    }
+
+	    $scope.getRecurso = function(descripcion){
+	    	return dataService.getRecursos(descripcion).then(function(recursos){
+	    		return recursos.map(function(recursos){
+	    			return recursos.descripcion;
+	    		});
 	    	});
 	    }
 
@@ -63,18 +89,23 @@
 	    		nombre:'',
 	    		titulo:'',
 	    		fechaInicio: null,
-	    		costoTotal:0,
+	    		costoTotal:null,
+	    		recursos:[],
+	    		idProceso:0,
+	    		status:1,
 	    	};
-	    	$scope.formProyecto = 1;
+	    	$scope.setForm(1);
 	    }
+
 	    $scope.setProyecto = function(idProyecto){
 			$scope.proyecto = $scope.proyectos.filter(function (el) {
 												return el.idProyecto == idProyecto;
 											})[0];
-		};
+		}
+
 		$scope.isSelected = function(idProyecto){
 			return $scope.proyecto.idProyecto == idProyecto;
-		};
+		}
 
 	    $scope.getStatus = function(Status){
 	    	return Status ? 'Activo' : 'Cancelado';
@@ -102,9 +133,23 @@
 	    			});
 	    		});
 	    }
+
 	    $scope.editProyecto = function(idProyecto){
 	    	$scope.setProyecto(idProyecto);
 	    	$scope.formProyecto = 1;
+	    }
+
+	    $scope.addProyecto = function(){
+	    	dataService.addProyecto($scope.proyecto).then(function(proyecto){
+	    		alert(proyecto);
+	    	});
+	    }
+
+	    $scope.setForm = function(value){
+	    	$scope.formProyecto = value;
+	    	if(value){
+	    		$('#js-proyecto-nombre').focus();
+	    	}
 	    }
 
 	    dataService.getProyectos().then(function(proyectos){
@@ -114,9 +159,60 @@
 		dataService.getProcesos().then(function(procesos){
 			$scope.procesos = procesos;
 		});
-
+		dataService.addProyecto({}).then(function(response){
+			alert(response);
+		});
 	});
 
+	/****************************************************
+	|					DIRECTIVAS
+	*****************************************************/
+	app.directive('ngEnter', function () {
+	    return function (scope, element, attrs) {
+	        element.bind("keydown keypress", function (event) {
+	            if(event.which === 13) {
+	                scope.$apply(function (){
+	                    scope.$eval(attrs.ngEnter);
+	                });
+
+	                event.preventDefault();
+	            }
+	        });
+	    };
+	});
+
+	app.directive('validNumber', function() {
+	  return {
+	    require: '?ngModel',
+	    link: function(scope, element, attrs, ngModelCtrl) {
+	      if(!ngModelCtrl) {
+	        return; 
+	      }
+
+	      ngModelCtrl.$parsers.push(function(val) {
+	        if (angular.isUndefined(val)) {
+	            var val = '';
+	        }
+	        var clean = val.replace( /[^0-9]+/g, '');
+	        if (val !== clean) {
+	          ngModelCtrl.$setViewValue(clean);
+	          ngModelCtrl.$render();
+	        }
+	        return clean;
+	      });
+
+	      element.bind('keypress', function(event) {
+	        if(event.keyCode === 32) {
+	          event.preventDefault();
+	        }
+	      });
+	    }
+	  };
+	});
+	
+	/****************************************************
+	|			LLAMADAS AL SERVIDOR PARA TRAER DATOS
+	*****************************************************/
 	app.service(
 		"dataService",
 		function($http,$q) {
@@ -127,51 +223,63 @@
 				removeProyecto:removeProyecto,
 				getClientes:getClientes,
 				getProcesos:getProcesos,
+				getRecursos:getRecursos,
+				addProyecto:addProyecto,
 			});
 
+			function getRecursos(descripcion){
+				return $http({
+					method:'get',
+					url:'recursos/search/'+descripcion,
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
 			function getProcesos(){
-				var request = $http({
+				return $http({
 					method:'get',
 					url:'procesos/search',
 					params:{}
-				});
-				return request.then(handleSuccess,handleError);
+				}).then(handleSuccess,handleError);
 			}
 
 			function getClientes(nombre){
-				var request = $http({
+				return $http({
 					method:'get',
 					url:'clientes/search/'+nombre,
 					params:{},
-				});
-				return request.then(handleSuccess,handleError);
+				}).then(handleSuccess,handleError);
+			}
+
+			function addProyecto(proyecto){
+				return $http({
+					method:'POST',
+					url:'proyectos/',
+					params:proyecto,
+				}).then(handleSuccess,handleError);
 			}
 
 			function getProyectos(){
-				var request = $http({
+				return $http({
 					method:'get',
 					url:'proyectos/search',
 					params: {},
-				});
-				return (request.then(handleSuccess,handleError));
+				}).then(handleSuccess,handleError);
 			}
 			
 			function removeProyecto(id){
-				var request = $http({
+				return $http({
 					method:'DELETE',
 					url:'proyectos/'+id,
 					params:{},
-				});
-				return (request.then(handleSuccess,handleError));
+				}).then(handleSuccess,handleError);
 			}
 
 			function handleError( response ) {
-
                 if (! angular.isObject( response.data ) ||
                     ! response.data.message) {
                     	return( $q.reject( "A ocurrido un error desconocido." ) );
                 }
-                
                 return( $q.reject( response.data.message ) );
             }
 

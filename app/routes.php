@@ -35,6 +35,9 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('proyectos',function(){
 		return View::make('proyectos/index');
 	});
+	Route::post('proyectos',function(){
+		return Response::json('works');
+	});
 	Route::delete('proyectos/{id}',function($id){
 		return Response::json(
 			DB::table('proyecto')
@@ -55,6 +58,14 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('procesos/search',function(){
 		return Response::json(
 			DB::table('procesos')
+				->get()
+		);
+	});
+
+	Route::get('recursos/search/{descripcion?}',function($descripcion = ''){
+		return Response::json(
+			DB::table('recursos_materiales')
+				->where('descripcion','like','%'.$descripcion.'%')
 				->get()
 		);
 	});
