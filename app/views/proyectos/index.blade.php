@@ -50,7 +50,7 @@
 	</div>
 
 
-	<div novalidate class="formulario item-animate" ng-show="formProyecto" >
+	<form novalidate class="formulario item-animate" ng-show="formProyecto" name="proyectoForm" ng-submit="save(proyecto)">
 		<div class="col-md-7">
 			<div class="form-group row">
 				<label class="control-label col-md-4">Nombre del Proyecto:</label>			
@@ -67,14 +67,14 @@
 			<div class="form-group row">
 				<label class="control-label col-md-4">Descripcion:</label>	
 				<div class="col-md-8">
-					<textarea required class="form-control" rows="4" ng-model="proyecto.descripcion"></textarea>	
+					<textarea required class="form-control" style="resize:none; resize: vertical;" rows="4" ng-model="proyecto.descripcion"></textarea>	
 					<span class="gray-color pull-right">@{{500-proyecto.descripcion.length}} Caracteres restantes</span>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="control-label col-md-4">Cliente:</label>	
 				<div class="col-md-8">
-					<input required type="text" ng-model="proyecto.cliente" placeholder="" typeahead="cliente as cliente.nombre for cliente in getClientes($viewValue)" typeahead-loading="loadingClientes" class="form-control">
+					<input required type="text" ng-model="cliente" placeholder="" typeahead="cliente as cliente.nombre for cliente in getClientes($viewValue)" typeahead-loading="loadingClientes" class="form-control">
     				<i ng-show="loadingClientes" class="glyphicon glyphicon-refresh"></i>	
 				</div>
 			</div>
@@ -114,7 +114,7 @@
 				<label class="control-label col-md-4">Fecha Inicio:</label>	
 				<div class="col-md-8">
 					<p class="input-group">
-						<input required class="form-control" is-open="openedInicio" datepicker-options="dateOptions" ng-required="true" ng-model="proyecto.fechaInicio" datepicker-popup="@{{format}}" min-date="minDate">	
+						<input required class="form-control" is-open="openedInicio" datepicker-options="dateOptions" ng-required="true" ng-model="proyecto.fechaInicio" datepicker-popup="@{{format}}">	
 						<span class="input-group-btn">
 	                		<button style="height: 34px;" type="button" class="btn btn-default" ng-click="open($event,1)"><i class="glyphicon glyphicon-calendar"></i></button>
 	              		</span>
@@ -125,7 +125,7 @@
 				<label class="control-label col-md-4">Fecha Fin:</label>	
 				<div class="col-md-8">
 					<p class="input-group">
-						<input required class="form-control" is-open="openedFin" datepicker-options="dateOptions" ng-required="true" ng-model="proyecto.fechaFin" datepicker-popup="@{{format}}" min-date="minDate">	
+						<input required class="form-control" is-open="openedFin" datepicker-options="dateOptions" ng-required="true" ng-model="proyecto.fechaFin" datepicker-popup="@{{format}}">	
 						<span class="input-group-btn">
 	                		<button style="height: 34px;" type="button" class="btn btn-default" ng-click="open($event,0)"><i class="glyphicon glyphicon-calendar"></i></button>
 	              		</span>
@@ -135,7 +135,10 @@
 			<div class="form-group row">
 				<label class="control-label col-md-4">Proceso:</label>	
 				<div class="col-md-8">
-					<select required class="form-control" ng-model="proyecto.idProceso"ng-options="p.idProceso as p.nombre for p in procesos"></select>
+					<select required class="form-control" name="proceso_id" ng-model="proyecto.idProceso"ng-options="p.idProceso as p.nombre for p in procesos">
+						<option value="" disabled="disabled" style="display:none">Seleccione</option>
+					</select>
+					 <span class="error" ng-show="proyectoForm.proceso_id.$dirty && proyectoForm.proceso_id.$invalid">Select service</span>
 				</div>
 			</div>
 			<div class="form-group row">
@@ -147,10 +150,9 @@
 		</div>
 		<div class="col-md-12" style="border-top:1px solid #eee; padding:10px; padding-bottom: 30px;">
 				<button class="btn btn-default pull-right" ng-click="setForm(0)">Cancelar</button>
-				<button class="btn btn-success pull-right" ng-click="addProyecto()" style="margin-right:5px;">Guardar</button>
+				<button class="btn btn-success pull-right" ng-disabled="proyectoForm.$invalid" ng-click="addProyecto()" style="margin-right:5px;">Guardar</button>
 		</div>
-		@{{proyecto | json}}
-	</div>
+	</form>
 
 </div>
 </div>

@@ -5,6 +5,7 @@ body{
 	background: none repeat scroll 0% 0% rgb(247, 247, 247);
 	font-family: 'Roboto', sans-serif;
 }
+
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 .header{
 	text-align: center;
@@ -90,6 +91,9 @@ div.scroll{
 
  .formulario select.ng-valid.ng-touched {
     border-color: #3c763d;
+  }
+  textarea.no-vert{
+  	textarea.vert { resize:none; }
   }
 /*---------------------------------------
 |				@LAYOUT STYLE

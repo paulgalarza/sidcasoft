@@ -91,8 +91,9 @@
 	    		fechaInicio: null,
 	    		costoTotal:null,
 	    		recursos:[],
-	    		idProceso:0,
+	    		idProceso:null,
 	    		status:1,
+	    		idCliente:0,
 	    	};
 	    	$scope.setForm(1);
 	    }
@@ -101,6 +102,9 @@
 			$scope.proyecto = $scope.proyectos.filter(function (el) {
 												return el.idProyecto == idProyecto;
 											})[0];
+			dataService.getCliente($scope.proyecto.idCliente).then(function(cliente){
+				$scope.cliente = cliente;
+			});
 		}
 
 		$scope.isSelected = function(idProyecto){
@@ -140,8 +144,11 @@
 	    }
 
 	    $scope.addProyecto = function(){
-	    	dataService.addProyecto($scope.proyecto).then(function(proyecto){
-	    		alert(proyecto);
+	    	$scope.proyecto.idCliente = $scope.cliente.idCliente;
+	    	dataService.addProyecto($scope.proyecto).then(function(proyectos){
+	    		$scope.proyectos = proyectos;
+	    		$scope.formProyecto = 0;
+	    		swal("Guardado!", "Proyecto guardado con éxito!", "success")
 	    	});
 	    }
 
@@ -158,9 +165,6 @@
 	    });
 		dataService.getProcesos().then(function(procesos){
 			$scope.procesos = procesos;
-		});
-		dataService.addProyecto({}).then(function(response){
-			alert(response);
 		});
 	});
 
@@ -225,6 +229,7 @@
 				getProcesos:getProcesos,
 				getRecursos:getRecursos,
 				addProyecto:addProyecto,
+				getCliente:getCliente
 			});
 
 			function getRecursos(descripcion){
@@ -251,11 +256,20 @@
 				}).then(handleSuccess,handleError);
 			}
 
+			function getCliente(id){
+				return $http({
+					method:'get',
+					url:'cliente/'+id,
+					params:{}
+				}).then(handleSuccess,handleError)
+			}
+
 			function addProyecto(proyecto){
 				return $http({
 					method:'POST',
-					url:'proyectos/',
+					url:'proyectos/add',
 					params:proyecto,
+					headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
 				}).then(handleSuccess,handleError);
 			}
 
