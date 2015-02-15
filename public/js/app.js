@@ -6,6 +6,9 @@
 	/****************************************************
 	|					CONTROLLERS
 	*****************************************************/
+
+
+	/***			HOME CONTROLLER 												***/
 	app.controller('homeController',function($http,$scope,dataService){
 
 		$scope.proyectos = [];
@@ -30,7 +33,7 @@
 	});
 
 	app.controller('proyectosController', function($http,$scope,dataService){
-	    
+
 		$scope.itemsByPage=10;
 	    $scope.proyectos = [];
 	    $scope.displayedCollection = [];
@@ -116,7 +119,7 @@
 	    }
 
 	    $scope.removeProyecto = function(idProyecto){
-	    	swal({   
+	    	swal({
 	    		title: "¿Desea eliminar el registro?",
 	    		text: "No podras recuperar el registro despues de ser eliminado!",
 	    		type: "warning",
@@ -168,6 +171,30 @@
 		});
 	});
 
+	/***			HOME CONTROLLER 												***/
+	app.controller('documentosController',function($http,$scope,dataService){
+			$scope.options = [
+				"Requerimientos",
+				"Descripción de proyecto",
+				"Plan de proyecto",
+				"Reporte de actividades",
+				"Reporte de evolución",
+				"Paquete de salidas"
+			];
+
+			$scope.selected = "";
+
+			$scope.isSelected = function(option){
+				debugger
+				return $scope.selected == option;
+			}
+
+			$scope.setTab = function(tab){
+				$scope.selected = tab;
+			}
+	});
+
+
 	/****************************************************
 	|					DIRECTIVAS
 	*****************************************************/
@@ -190,7 +217,7 @@
 	    require: '?ngModel',
 	    link: function(scope, element, attrs, ngModelCtrl) {
 	      if(!ngModelCtrl) {
-	        return; 
+	        return;
 	      }
 
 	      ngModelCtrl.$parsers.push(function(val) {
@@ -213,7 +240,7 @@
 	    }
 	  };
 	});
-	
+
 	/****************************************************
 	|			LLAMADAS AL SERVIDOR PARA TRAER DATOS
 	*****************************************************/
@@ -280,7 +307,7 @@
 					params: {},
 				}).then(handleSuccess,handleError);
 			}
-			
+
 			function removeProyecto(id){
 				return $http({
 					method:'DELETE',
@@ -304,5 +331,3 @@
 	)
 
 })();
-	
-

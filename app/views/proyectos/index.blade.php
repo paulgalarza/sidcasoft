@@ -138,7 +138,6 @@
 					<select required class="form-control" name="proceso_id" ng-model="proyecto.idProceso"ng-options="p.idProceso as p.nombre for p in procesos">
 						<option value="" disabled="disabled" style="display:none">Seleccione</option>
 					</select>
-					 <span class="error" ng-show="proyectoForm.proceso_id.$dirty && proyectoForm.proceso_id.$invalid">Select service</span>
 				</div>
 			</div>
 			<div class="form-group row">

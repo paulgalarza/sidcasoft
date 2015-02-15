@@ -77,4 +77,8 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('usuarios',function(){
 		return View::make('usuarios/index');
 	});
+
+	Route::get('documentos',function(){
+		return View::make('documentos/index');
+	});
 });

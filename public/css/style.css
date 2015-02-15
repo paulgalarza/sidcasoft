@@ -95,6 +95,10 @@ div.scroll{
   textarea.no-vert{
   	textarea.vert { resize:none; }
   }
+	.leftMenu{
+
+	}
+
 /*---------------------------------------
 |				@LAYOUT STYLE
 |---------------------------------------*/
@@ -181,7 +185,7 @@ div.scroll{
 {
 	display: block;
 	margin-top: 10px;
-} 
+}
 
 /*---------------------------------------
 |				@LOGIN STYLE
