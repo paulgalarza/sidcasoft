@@ -32,6 +32,7 @@
 		};
 	});
 
+	//			PROYECTOS CONTROLLER 
 	app.controller('proyectosController', function($http,$scope,dataService){
 
 		$scope.itemsByPage=10;
@@ -171,6 +172,106 @@
 		});
 	});
 
+	//USUARIOS CONTROLLER
+
+	app.controller('usuariosController', function($http,$scope,dataService){
+		
+		$scope.itemsByPage=10;
+	    $scope.usuarios = [];
+	    $scope.displayedCollection = [];
+	    $scope.formUsuario = 0;
+	    $scope.usuario = {};
+	    $scope.asyncSelected = undefined;
+	    $scope.format = 'dd-MMMM-yyyy';
+	    $scope.minDate = new Date();
+		$scope.estatus = [
+			{status:1,descripcion:"Activo"},
+			{status:0,descripcion:"Inactivo"}
+		];
+
+		dataService.getUsuarios().then(function(usuarios){
+	    	$scope.usuarios = usuarios;
+			$scope.displayedCollection = [].concat(usuarios);
+	    });
+	    dataService.getTipoUsuario().then(function(tipoUsuario){
+			$scope.tipoUsuario = tipoUsuario;
+		});
+
+	    $scope.getStatus = function(Status){
+	    	return Status ? 'Activo' : 'Baja';
+	    }
+
+	    $scope.isSelected = function(idUsuario){
+			return $scope.usuario.idUsuario == idUsuario;
+		}
+
+		$scope.newUsuario = function(){
+	    	$scope.usuario = {
+	    		idUsuario:0,
+	    		usuario:'',
+	    		email:'',
+	    		nombre: '',
+	    		domicilio:'',
+	    		telefono:'',
+	    		password:'',
+	    		idTipoUsuario:null,
+	    		estatus:1,
+	    	};
+	    	$scope.setForm(1);
+	    }
+
+	    $scope.setForm = function(value){
+	    	$scope.formUsuario = value;
+	    	if(value){
+	    		$('#js-usuario-nombre').focus();
+	    	}
+	    }
+
+		$scope.setUsuario = function(idUsuario){
+			$scope.usuario = $scope.usuarios.filter(function (el) {
+												return el.idUsuario == idUsuario;
+											})[0];
+		}
+
+	    $scope.editUsuario = function(idUsuario){
+	    	$scope.setUsuario(idUsuario);
+	    	$scope.formUsuario = 1;
+	    }
+
+	    $scope.addUsuario = function(){
+	    	dataService.addUsuario($scope.usuario).then(function(usuarios){
+	    		$scope.usuarios = usuarios;
+	    		$scope.formUsuario = 0;
+	    		swal("Guardado!", "Usuario dado de alta con éxito!", "success")
+	    	});
+	    }
+
+	    $scope.removeUsuario = function(idUsuario){
+	    	swal({
+	    		title: "¿Desea eliminar el usuario?",
+	    		text: "No podras recuperar el usuario despues de ser eliminado!",
+	    		type: "warning",
+	    		showCancelButton: true,
+	    		confirmButtonColor: "#DD6B55",
+	    		confirmButtonText: "Si, eliminalo!",
+	    		closeOnConfirm: false },
+	    		function(){
+	    			dataService.removeUsuario(idUsuario).then(function(usuarios){
+	    				$scope.usuarios = usuarios;
+						$scope.displayedCollection = [].concat(usuarios);
+						swal({
+							title:"Eliminado!",
+							text:"El usuario ha sido eliminado.",
+							type:"success",
+							timer:2000,
+						});
+	    			});
+	    		});
+	    }
+
+
+	});
+
 	/***			HOME CONTROLLER 												***/
 	app.controller('documentosController',function($http,$scope,dataService){
 			$scope.options = [
@@ -256,8 +357,54 @@
 				getProcesos:getProcesos,
 				getRecursos:getRecursos,
 				addProyecto:addProyecto,
-				getCliente:getCliente
+				getCliente:getCliente,
+				getUsuarios:getUsuarios,
+				getTipoUsuario:getTipoUsuario,
+				addUsuario:addUsuario,
+				editUsuario:editUsuario,
+				removeUsuario:removeUsuario
 			});
+
+			function removeUsuario(id){
+				return $http({
+					method:'DELETE',
+					url:'usuarios/'+id,
+					params:{},
+				}).then(handleSuccess,handleError);
+			}
+
+			function editUsuario(){
+				return $http({
+					method:'post',
+					url:'usuarios/add',
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			function addUsuario (usuario){
+				return $http({
+					method:'post',
+					url:'usuarios/add',
+					params:usuario,
+				}).then(handleSuccess,handleError);
+
+			}
+
+			function getUsuarios () {
+				return $http({
+					method:'get',
+					url:'usuarios/search',
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			function getTipoUsuario () {
+				return $http({
+					method:'get',
+					url:'tipousuario/search',
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
 
 			function getRecursos(descripcion){
 				return $http({
@@ -319,7 +466,7 @@
 			function handleError( response ) {
                 if (! angular.isObject( response.data ) ||
                     ! response.data.message) {
-                    	return( $q.reject( "A ocurrido un error desconocido." ) );
+                    	return( $q.reject( "Ha ocurrido un error desconocido." ) );
                 }
                 return( $q.reject( response.data.message ) );
             }

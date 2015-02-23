@@ -45,6 +45,36 @@ Route::group(array('before' => 'auth'), function()
 		);
 	});
 
+	Route::get('usuarios/search',function()
+	{
+		return Response::json(
+			DB::table('usuarios')
+				->join('tipousuario','usuarios.idTipoUsuario','=','tipousuario.idTipoUsuario')
+				->select('usuarios.*','tipousuario.descripcion AS tipoUsuario')
+				->get()
+		);
+	});
+	Route::post('usuarios/add','UsuariosController@add');
+	Route::delete('usuarios/{id}',function($id){
+		return Response::json(
+			DB::table('usuarios')
+				->join('tipousuario','usuarios.idTipoUsuario','=','tipousuario.idTipoUsuario')
+				->select('usuarios.*','tipousuario.descripcion AS tipoUsuario')
+				->get()
+		);
+	});
+
+	Route::get('usuarios',function(){
+		return View::make('usuarios/index');
+	});
+
+	Route::get('tipousuario/search',function(){
+		return Response::json(
+			DB::table('tipousuario')
+				->get()
+		);
+	});
+
 	Route::get('clientes/search/{nombre?}',function($nombre = ''){
 		return Response::json(
 			DB::table('cliente')
@@ -74,9 +104,7 @@ Route::group(array('before' => 'auth'), function()
 		);
 	});
 
-	Route::get('usuarios',function(){
-		return View::make('usuarios/index');
-	});
+	
 
 	Route::get('documentos',function(){
 		return View::make('documentos/index');
