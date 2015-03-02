@@ -149,6 +149,12 @@
 
 	    $scope.addProyecto = function(){
 	    	$scope.proyecto.idCliente = $scope.cliente.idCliente;
+	    	if($scope.proyecto.idProyecto){
+	    		dataService.editProyecto($scope.proyecto).then(function(response){
+	    			console.log(response);
+	    		});
+	    		return;
+	    	}
 	    	dataService.addProyecto($scope.proyecto).then(function(proyectos){
 	    		$scope.proyectos = proyectos;
 	    		$scope.formProyecto = 0;
@@ -167,9 +173,11 @@
 	    	$scope.proyectos = proyectos;
 			$scope.displayedCollection = [].concat(proyectos);
 	    });
-		dataService.getProcesos().then(function(procesos){
-			$scope.procesos = procesos;
-		});
+
+	    dataService.getProcesos().then(function(procesos){
+                      $scope.procesos = procesos;
+                                     });
+		
 	});
 
 	//USUARIOS CONTROLLER
@@ -272,6 +280,199 @@
 
 	});
 
+	//EMPRESAS CONTROLLER
+
+	app.controller('empresasController', function($http,$scope,dataService){
+		
+		$scope.itemsByPage=10;
+	    $scope.empresas = [];
+	    $scope.displayedCollection = [];
+	    $scope.formEmpresa = 0;
+	    $scope.empresa = {};
+	    $scope.asyncSelected = undefined;
+	    $scope.format = 'dd-MMMM-yyyy';
+	    $scope.minDate = new Date();
+		$scope.estatus = [
+			{status:1,descripcion:"Activo"},
+			{status:0,descripcion:"Inactivo"}
+		];
+
+		dataService.getEmpresas().then(function(empresas){
+	    	$scope.empresas = empresas;
+			$scope.displayedCollection = [].concat(empresas);
+	    });
+
+	    $scope.getStatus = function(Status){
+	    	return Status ? 'Activo' : 'Baja';
+	    }
+
+	    $scope.isSelected = function(idEmpresa){
+			return $scope.empresa.idEmpresa == idEmpresa;
+		}
+
+		$scope.newEmpresa = function(){
+	    	$scope.empresa = {
+	    		idEmpresa:0,
+	    		nombre: '',
+	    		encargado: '',
+	    		RFC:'',
+	    		direccion:'',
+	    		telefono:'',
+	    		estatus:1,
+	    	};
+	    	$scope.setForm(1);
+	    }
+
+	    $scope.setForm = function(value){
+	    	$scope.formEmpresa = value;
+	    	if(value){
+	    		$('#js-empresa-nombre').focus();
+	    	}
+	    }
+
+		$scope.setEmpresa = function(idEmpresa){
+			$scope.empresa = $scope.empresas.filter(function (el) {
+												return el.idEmpresa == idEmpresa;
+											})[0];
+		}
+
+	    $scope.editEmpresa = function(idEmpresa){
+	    	$scope.setEmpresa(idEmpresa);
+	    	$scope.formEmpresa = 1;
+	    }
+
+	    $scope.addEmpresa = function(){
+	    	dataService.addEmpresa($scope.empresa).then(function(empresas){
+	    		$scope.empresas = empresas;
+	    		$scope.formEmpresa = 0;
+	    		swal("Guardada!", "Empresa dada de alta con éxito!", "success")
+	    	});
+	    }
+
+	    $scope.removeEmpresa = function(idEmpresa){
+	    	swal({
+	    		title: "¿Desea eliminar la empresa?",
+	    		text: "No podras recuperar la empresa despues de ser eliminada!",
+	    		type: "warning",
+	    		showCancelButton: true,
+	    		confirmButtonColor: "#DD6B55",
+	    		confirmButtonText: "Si, eliminala!",
+	    		closeOnConfirm: false },
+	    		function(){
+	    			dataService.removeEmpresa(idEmpresa).then(function(empresas){
+	    				$scope.empresas = empresas;
+						$scope.displayedCollection = [].concat(empresas);
+						swal({
+							title:"Eliminada!",
+							text:"La empresa ha sido eliminada.",
+							type:"success",
+							timer:2000,
+						});
+	    			});
+	    		});
+	    }
+
+
+	});
+
+	//CLIENTES CONTROLLER
+
+	app.controller('clientesController', function($http,$scope,dataService){
+		
+		$scope.itemsByPage=10;
+	    $scope.clientes = [];
+	    $scope.displayedCollection = [];
+	    $scope.formCliente = 0;
+	    $scope.cliente = {};
+	    $scope.asyncSelected = undefined;
+	    $scope.format = 'dd-MMMM-yyyy';
+	    $scope.minDate = new Date();
+	    $scope.empresas = [];
+	    $scope.estatus = [
+			{status:1,descripcion:"Activo"},
+			{status:0,descripcion:"Inactivo"}
+		];
+
+		dataService.getClientes('').then(function(clientes){
+			console.log(clientes);
+	    	$scope.clientes = clientes;
+			$scope.displayedCollection = [].concat(clientes);
+	    });
+
+	    dataService.getEmpresas().then(function(empresas){
+			$scope.empresas = empresas;
+		});
+
+		$scope.getStatus = function(Status){
+	    	return Status ? 'Activo' : 'Baja';
+	    }
+
+	    $scope.isSelected = function(idCliente){
+			return $scope.cliente.idCliente == idCliente;
+		}
+
+		$scope.newCliente = function(){
+	    	$scope.cliente = {
+	    		idCliente:0,
+	    		nombre: '',
+	    		telefono:'',
+	    		email:'',
+	    	};
+	    	$scope.setForm(1);
+	    }
+
+	    $scope.setForm = function(value){
+	    	$scope.formCliente = value;
+	    	if(value){
+	    		$('#js-cliente-nombre').focus();
+	    	}
+	    }
+
+		$scope.setCliente = function(idCliente){
+			$scope.cliente = $scope.clientes.filter(function (el) {
+												return el.idCliente == idCliente;
+											})[0];
+		}
+
+	    $scope.editCliente = function(idCliente){
+	    	$scope.setCliente(idCliente);
+	    	$scope.formCliente = 1;
+	    }
+
+	    $scope.addCliente = function(){
+	    	dataService.addCliente($scope.cliente).then(function(clientes){
+	    		$scope.clientes = clientes;
+	    		$scope.formCliente = 0;
+	    		swal("Guardado!", "Cliente dado de alta con éxito!", "success")
+	    	});
+	    }
+
+	    $scope.removeCliente = function(idCliente){
+	    	swal({
+	    		title: "¿Desea eliminar el cliente?",
+	    		text: "No podras recuperar el cliente después de ser eliminado!",
+	    		type: "warning",
+	    		showCancelButton: true,
+	    		confirmButtonColor: "#DD6B55",
+	    		confirmButtonText: "Si, eliminalo!",
+	    		closeOnConfirm: false },
+	    		function(){
+	    			dataService.removeCliente(idCliente).then(function(clientes){
+	    				$scope.clientes = clientes;
+						$scope.displayedCollection = [].concat(clientes);
+						swal({
+							title:"Eliminado!",
+							text:"El cliente ha sido eliminado.",
+							type:"success",
+							timer:2000,
+						});
+	    			});
+	    		});
+	    }
+
+
+	});
+
 	/***			HOME CONTROLLER 												***/
 	app.controller('documentosController',function($http,$scope,dataService){
 			$scope.options = [
@@ -357,13 +558,79 @@
 				getProcesos:getProcesos,
 				getRecursos:getRecursos,
 				addProyecto:addProyecto,
+				editProyecto:editProyecto,
 				getCliente:getCliente,
 				getUsuarios:getUsuarios,
 				getTipoUsuario:getTipoUsuario,
 				addUsuario:addUsuario,
 				editUsuario:editUsuario,
-				removeUsuario:removeUsuario
+				removeUsuario:removeUsuario,
+				getEmpresas:getEmpresas,
+				addEmpresa:addEmpresa,
+				editEmpresa:editEmpresa,
+				removeEmpresa:removeEmpresa,
+				addCliente:addCliente,
+				editCliente:editCliente,
+				removeCliente:removeCliente
 			});
+
+			function removeCliente(id){
+				return $http({
+					method:'DELETE',
+					url:'clientes/'+id,
+					params:{},
+				}).then(handleSuccess,handleError);
+			}
+
+			function editCliente(){
+				return $http({
+					method:'post',
+					url:'clientes/add',
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			function addCliente (cliente){
+				return $http({
+					method:'post',
+					url:'clientes/add',
+					params:cliente,
+				}).then(handleSuccess,handleError);
+
+			}
+
+			function removeEmpresa(id){
+				return $http({
+					method:'DELETE',
+					url:'empresas/'+id,
+					params:{},
+				}).then(handleSuccess,handleError);
+			}
+
+			function editEmpresa(){
+				return $http({
+					method:'post',
+					url:'empresas/add',
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			function addEmpresa (empresa){
+				return $http({
+					method:'post',
+					url:'empresas/add',
+					params:empresa,
+				}).then(handleSuccess,handleError);
+
+			}
+
+			function getEmpresas () {
+				return $http({
+					method:'get',
+					url:'empresas/search',
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
 
 			function removeUsuario(id){
 				return $http({
@@ -425,7 +692,7 @@
 			function getClientes(nombre){
 				return $http({
 					method:'get',
-					url:'clientes/search/'+nombre,
+					url:nombre ? 'clientes/search/'+nombre:'clientes/search',
 					params:{},
 				}).then(handleSuccess,handleError);
 			}
@@ -446,7 +713,14 @@
 					headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
 				}).then(handleSuccess,handleError);
 			}
-
+			function editProyecto(proyecto){
+				return $http({
+					method:'put',
+					url:'proyectos/',
+					params:proyecto,
+					headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
+				}).then(handleSuccess,handleError);
+			}
 			function getProyectos(){
 				return $http({
 					method:'get',

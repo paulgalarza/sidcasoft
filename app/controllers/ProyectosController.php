@@ -25,5 +25,8 @@ class ProyectosController extends BaseController {
 				->get()
 		);
 	}
+	public function edit(){
+		return Response::json("Works!!");
+	}
 	
 }
