@@ -1,10 +1,6 @@
 <?php
-
-
-
 Route::get('login','AuthController@showLogin');
 Route::post('login','AuthController@postLogin');
-
 
 //Nos inica que las rutas que están dentro de él sólo serán mostradas si antes el usuario se ha autenticado.
 Route::group(array('before' => 'auth'), function()
@@ -20,6 +16,7 @@ Route::group(array('before' => 'auth'), function()
 
     	return View::make('profile/index');
     });
+
     Route::post('password','AuthController@newPassword');
 
     Route::get('proyectos',function(){
@@ -37,7 +34,9 @@ Route::group(array('before' => 'auth'), function()
 	});
 
 	Route::post('proyectos/add','ProyectosController@add');
+
 	Route::put('proyectos/','ProyectosController@edit');
+	
 	Route::delete('proyectos/{id}',function($id){
 		$proyecto = Proyecto::find($id);
 		$proyecto->delete();
@@ -62,7 +61,11 @@ Route::group(array('before' => 'auth'), function()
 				->get()
 		);
 	});
+
 	Route::post('usuarios/add','UsuariosController@add');
+
+	Route::put('usuarios/','UsuariosController@edit');
+
 	Route::delete('usuarios/{id}',function($id){
 		$user = User::find($id);
 		$user->delete();
@@ -108,6 +111,7 @@ Route::group(array('before' => 'auth'), function()
 	});
 
 	Route::post('clientes/add','ClientesController@add');
+
 	Route::delete('clientes/{id}',function($id){
 		$cliente = Cliente::find($id);
 		$cliente->delete();
@@ -132,6 +136,7 @@ Route::group(array('before' => 'auth'), function()
 	});
 
 	Route::post('empresas/add','EmpresasController@add');
+
 	Route::delete('empresas/{id}',function($id){
 		$empresa = Empresa::find($id);
 		$empresa->delete();
@@ -155,8 +160,6 @@ Route::group(array('before' => 'auth'), function()
 				->get()
 		);
 	});
-
-	
 
 	Route::get('documentos',function(){
 		return View::make('documentos/index');

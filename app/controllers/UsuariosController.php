@@ -23,5 +23,9 @@ class UsuariosController extends BaseController {
 				->get()
 		);
 	}
+
+	public function edit(){
+		return Response::json("Works!!");
+	}
 	
 }
