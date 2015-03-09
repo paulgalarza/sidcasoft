@@ -64,7 +64,7 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::post('usuarios/add','UsuariosController@add');
 
-	Route::put('usuarios/','UsuariosController@edit');
+	Route::patch('usuarios/{id}','UsuariosController@update');
 
 	Route::delete('usuarios/{id}',function($id){
 		$user = User::find($id);

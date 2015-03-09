@@ -246,11 +246,24 @@
 	    	$scope.formUsuario = 1;
 	    }
 
+	    $scope.guardaCambiosUsuario = function(idUsuario){
+	    	$scope.setUsuario(idUsuario);
+	    	$scope.formUsuario = 1;
+	    	//FALTA HACER QUE VAYA AL DATASERVICE Y QUE GUARDE EN LA BD
+
+	    	dataService.editUsuario(idUsuario).then(function(usuarios){
+	    		$scope.usuarios = usuarios;
+	    		$scope.formUsuario = 0;
+	    		alert("Terminó de guardar");
+	    		swal("Editado!", "Usuario dado de alta con éxito!", "success")
+	    	});
+	    }
+
 	    $scope.addUsuario = function(){
 	    	dataService.addUsuario($scope.usuario).then(function(usuarios){
 	    		$scope.usuarios = usuarios;
 	    		$scope.formUsuario = 0;
-	    		swal("Guardado!", "Usuario dado de alta con éxito!", "success")
+	    		swal("Guardado!", "Usuario editado con éxito!", "success")
 	    	});
 	    }
 
@@ -585,7 +598,7 @@
 			function editCliente(){
 				return $http({
 					method:'post',
-					url:'clientes/add',
+					url:'clientes/edit',
 					params:{}
 				}).then(handleSuccess,handleError);
 			}
@@ -640,10 +653,10 @@
 				}).then(handleSuccess,handleError);
 			}
 
-			function editUsuario(){
+			function editUsuario(id){
 				return $http({
-					method:'post',
-					url:'usuarios/add',
+					method:'patch',
+					url:'usuarios/'+id,
 					params:{}
 				}).then(handleSuccess,handleError);
 			}

@@ -24,8 +24,30 @@ class UsuariosController extends BaseController {
 		);
 	}
 
-	public function edit(){
-		return Response::json("Works!!");
+	public function edit($id)
+	{
+		$usuarios = User::find($id);
+	}
+
+	public function update($id){
+		//Ya guarda en la BD, pero no toma los valores de los input. . 
+		$input = Input::all();
+		$usuarios = User::find($id);
+		$usuarios->usuario = Input::get('usuario');
+		$usuarios->email = Input::get('email');
+		$usuarios->nombre = Input::get('nombre');
+		$usuarios->domicilio = Input::get('domicilio');
+		$usuarios->telefono = Input::get('telefono');
+		$usuarios->estatus = Input::get('estatus');
+		//$usuarios->save();
+		$usuarios->update($input);
+
+		return Response::json(
+			DB::table('usuarios')
+				->join('tipousuario','usuarios.idTipoUsuario','=','tipoUsuario.idTipoUsuario')
+				->select('usuarios.*','tipoUsuario.descripcion AS tipoUsuario')
+				->get()
+		);
 	}
 	
 }
