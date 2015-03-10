@@ -30,8 +30,6 @@ class UsuariosController extends BaseController {
 	}
 
 	public function update($id){
-		//Ya guarda en la BD, pero no toma los valores de los input. . 
-		//$input = Input::all();
 		$usuarios = User::find($id);
 		$usuarios->usuario = Input::get('usuario');
 		$usuarios->email = Input::get('email');
@@ -40,7 +38,6 @@ class UsuariosController extends BaseController {
 		$usuarios->telefono = Input::get('telefono');
 		$usuarios->estatus = Input::get('estatus');
 		$usuarios->save();
-		//$usuarios->update($input);
 
 		return Response::json(
 			DB::table('usuarios')

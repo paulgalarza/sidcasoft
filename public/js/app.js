@@ -250,13 +250,11 @@
 	    $scope.guardaCambiosUsuario = function(idUsuario){
 	    	$scope.setUsuario(idUsuario);
 	    	$scope.formUsuario = 1;
-	    	//FALTA HACER QUE VAYA AL DATASERVICE Y QUE GUARDE EN LA BD
 
 	    	dataService.editUsuario(idUsuario, $scope.usuario).then(function(usuarios){
 	    		$scope.usuarios = usuarios;
 	    		$scope.formUsuario = 0;
-	    		alert("Terminó de guardar");
-	    		swal("Editado!", "Usuario dado de alta con éxito!", "success")
+	    		swal("Editado!", "¡Usuario modificado con éxito!", "success")
 	    	});
 	    }
 
@@ -351,8 +349,20 @@
 		}
 
 	    $scope.editEmpresa = function(idEmpresa){
+	    	$scope.newEmpresa();
 	    	$scope.setEmpresa(idEmpresa);
 	    	$scope.formEmpresa = 1;
+	    }
+
+	    $scope.guardaCambiosEmpresa = function(idEmpresa){
+	    	$scope.setEmpresa(idEmpresa);
+	    	$scope.formEmpresa = 1;
+
+	    	dataService.editEmpresa(idEmpresa, $scope.empresa).then(function(empresas){
+	    		$scope.empresas = empresas;
+	    		$scope.formEmpresa = 0;
+	    		swal("Editado!", "¡Empresa modificada con éxito!", "success")
+	    	});
 	    }
 
 	    $scope.addEmpresa = function(){
@@ -621,11 +631,11 @@
 				}).then(handleSuccess,handleError);
 			}
 
-			function editEmpresa(){
+			function editEmpresa(id, empresa){
 				return $http({
-					method:'post',
-					url:'empresas/add',
-					params:{}
+					method:'get',
+					url:'empresas/'+id,
+					params:empresa,
 				}).then(handleSuccess,handleError);
 			}
 

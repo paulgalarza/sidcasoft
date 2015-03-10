@@ -137,6 +137,8 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::post('empresas/add','EmpresasController@add');
 
+	Route::get('empresas/{id}','EmpresasController@update');
+
 	Route::delete('empresas/{id}',function($id){
 		$empresa = Empresa::find($id);
 		$empresa->delete();
