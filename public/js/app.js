@@ -242,6 +242,7 @@
 		}
 
 	    $scope.editUsuario = function(idUsuario){
+	    	$scope.newUsuario();
 	    	$scope.setUsuario(idUsuario);
 	    	$scope.formUsuario = 1;
 	    }
@@ -251,7 +252,7 @@
 	    	$scope.formUsuario = 1;
 	    	//FALTA HACER QUE VAYA AL DATASERVICE Y QUE GUARDE EN LA BD
 
-	    	dataService.editUsuario(idUsuario).then(function(usuarios){
+	    	dataService.editUsuario(idUsuario, $scope.usuario).then(function(usuarios){
 	    		$scope.usuarios = usuarios;
 	    		$scope.formUsuario = 0;
 	    		alert("Terminó de guardar");
@@ -653,11 +654,11 @@
 				}).then(handleSuccess,handleError);
 			}
 
-			function editUsuario(id){
+			function editUsuario(id, usuario){
 				return $http({
 					method:'patch',
 					url:'usuarios/'+id,
-					params:{}
+					params:usuario,
 				}).then(handleSuccess,handleError);
 			}
 
