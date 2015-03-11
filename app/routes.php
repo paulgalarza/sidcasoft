@@ -35,7 +35,7 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::post('proyectos/add','ProyectosController@add');
 
-	Route::put('proyectos/','ProyectosController@edit');
+	Route::put('proyectos/{id}','ProyectosController@update');
 	
 	Route::delete('proyectos/{id}',function($id){
 		$proyecto = Proyecto::find($id);
@@ -64,7 +64,7 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::post('usuarios/add','UsuariosController@add');
 
-	Route::put('usuarios/','UsuariosController@edit');
+	Route::put('usuarios/{id}','UsuariosController@update');
 
 	Route::delete('usuarios/{id}',function($id){
 		$user = User::find($id);
@@ -112,6 +112,8 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::post('clientes/add','ClientesController@add');
 
+	Route::put('cliente/{id}','ClientesController@update');
+
 	Route::delete('clientes/{id}',function($id){
 		$cliente = Cliente::find($id);
 		$cliente->delete();
@@ -136,6 +138,8 @@ Route::group(array('before' => 'auth'), function()
 	});
 
 	Route::post('empresas/add','EmpresasController@add');
+
+	Route::put('empresas/{id}','EmpresasController@update');
 
 	Route::delete('empresas/{id}',function($id){
 		$empresa = Empresa::find($id);

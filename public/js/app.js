@@ -143,8 +143,20 @@
 	    }
 
 	    $scope.editProyecto = function(idProyecto){
+	    	$scope.newProyecto();
 	    	$scope.setProyecto(idProyecto);
 	    	$scope.formProyecto = 1;
+	    }
+
+	    $scope.guardaCambiosProyecto = function(idProyecto){
+	    	$scope.setProyecto(idProyecto);
+	    	$scope.formProyecto = 1;
+
+	    	dataService.editProyecto(idProyecto, $scope.proyecto).then(function(proyectos){
+	    		$scope.proyectos = proyectos;
+	    		$scope.formProyecto = 0;
+	    		swal("Editado", "¡Proyecto modificado con éxito!", "success")
+	    	});
 	    }
 
 	    $scope.addProyecto = function(){
@@ -158,7 +170,7 @@
 	    	dataService.addProyecto($scope.proyecto).then(function(proyectos){
 	    		$scope.proyectos = proyectos;
 	    		$scope.formProyecto = 0;
-	    		swal("Guardado!", "Proyecto guardado con éxito!", "success")
+	    		swal("Guardado", "¡Proyecto guardado con éxito!", "success")
 	    	});
 	    }
 
@@ -242,15 +254,27 @@
 		}
 
 	    $scope.editUsuario = function(idUsuario){
+	    	$scope.newUsuario();
 	    	$scope.setUsuario(idUsuario);
 	    	$scope.formUsuario = 1;
+	    }
+
+	    $scope.guardaCambiosUsuario = function(idUsuario){
+	    	$scope.setUsuario(idUsuario);
+	    	$scope.formUsuario = 1;
+
+	    	dataService.editUsuario(idUsuario, $scope.usuario).then(function(usuarios){
+	    		$scope.usuarios = usuarios;
+	    		$scope.formUsuario = 0;
+	    		swal("Editado", "¡Usuario modificado con éxito!", "success")
+	    	});
 	    }
 
 	    $scope.addUsuario = function(){
 	    	dataService.addUsuario($scope.usuario).then(function(usuarios){
 	    		$scope.usuarios = usuarios;
 	    		$scope.formUsuario = 0;
-	    		swal("Guardado!", "Usuario dado de alta con éxito!", "success")
+	    		swal("Guardado", "¡Usuario editado con éxito!", "success")
 	    	});
 	    }
 
@@ -337,15 +361,27 @@
 		}
 
 	    $scope.editEmpresa = function(idEmpresa){
+	    	$scope.newEmpresa();
 	    	$scope.setEmpresa(idEmpresa);
 	    	$scope.formEmpresa = 1;
+	    }
+
+	    $scope.guardaCambiosEmpresa = function(idEmpresa){
+	    	$scope.setEmpresa(idEmpresa);
+	    	$scope.formEmpresa = 1;
+
+	    	dataService.editEmpresa(idEmpresa, $scope.empresa).then(function(empresas){
+	    		$scope.empresas = empresas;
+	    		$scope.formEmpresa = 0;
+	    		swal("Editado", "¡Empresa modificada con éxito!", "success")
+	    	});
 	    }
 
 	    $scope.addEmpresa = function(){
 	    	dataService.addEmpresa($scope.empresa).then(function(empresas){
 	    		$scope.empresas = empresas;
 	    		$scope.formEmpresa = 0;
-	    		swal("Guardada!", "Empresa dada de alta con éxito!", "success")
+	    		swal("Guardada", "¡Empresa dada de alta con éxito!", "success")
 	    	});
 	    }
 
@@ -435,15 +471,28 @@
 		}
 
 	    $scope.editCliente = function(idCliente){
+	    	$scope.newCliente();
 	    	$scope.setCliente(idCliente);
 	    	$scope.formCliente = 1;
+	    }
+
+	    $scope.guardaCambiosCliente = function(idCliente)
+	    {
+	    	$scope.setCliente(idCliente);
+	    	$scope.formCliente = 1;
+
+	    	dataService.editCliente(idCliente, $scope.cliente).then(function(clientes){
+	    		$scope.clientes = clientes;
+	    		$scope.formCliente = 0;
+	    		swal("Editado", "¡Cliente modificado con éxito!", "success")
+	    	});
 	    }
 
 	    $scope.addCliente = function(){
 	    	dataService.addCliente($scope.cliente).then(function(clientes){
 	    		$scope.clientes = clientes;
 	    		$scope.formCliente = 0;
-	    		swal("Guardado!", "Cliente dado de alta con éxito!", "success")
+	    		swal("Guardado!", "¡Cliente dado de alta con éxito!", "success")
 	    	});
 	    }
 
@@ -585,7 +634,7 @@
 			function editCliente(){
 				return $http({
 					method:'post',
-					url:'clientes/add',
+					url:'clientes/edit',
 					params:{}
 				}).then(handleSuccess,handleError);
 			}
@@ -607,11 +656,11 @@
 				}).then(handleSuccess,handleError);
 			}
 
-			function editEmpresa(){
+			function editEmpresa(id, empresa){
 				return $http({
-					method:'post',
-					url:'empresas/add',
-					params:{}
+					method:'put',
+					url:'empresas/'+id,
+					params:empresa,
 				}).then(handleSuccess,handleError);
 			}
 
@@ -640,11 +689,11 @@
 				}).then(handleSuccess,handleError);
 			}
 
-			function editUsuario(){
+			function editUsuario(id, usuario){
 				return $http({
-					method:'post',
-					url:'usuarios/add',
-					params:{}
+					method:'put',
+					url:'usuarios/'+id,
+					params:usuario,
 				}).then(handleSuccess,handleError);
 			}
 
@@ -705,6 +754,15 @@
 				}).then(handleSuccess,handleError)
 			}
 
+			function editCliente(id, cliente)
+			{
+				return $http({
+					method:'put',
+					url:'cliente/'+id,
+					params:cliente,
+				}).then(handleSuccess,handleError)
+			}
+
 			function addProyecto(proyecto){
 				return $http({
 					method:'POST',
@@ -713,10 +771,10 @@
 					headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
 				}).then(handleSuccess,handleError);
 			}
-			function editProyecto(proyecto){
+			function editProyecto(id, proyecto){
 				return $http({
 					method:'put',
-					url:'proyectos/',
+					url:'proyectos/'+id,
 					params:proyecto,
 					headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
 				}).then(handleSuccess,handleError);
