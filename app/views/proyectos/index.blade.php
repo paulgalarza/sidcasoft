@@ -149,8 +149,8 @@
 		</div>
 		<div class="col-md-12" style="border-top:1px solid #eee; padding:10px; padding-bottom: 30px;">
 			<button class="btn btn-default pull-right" ng-click="setForm(0)">Cancelar</button>
-			<button class="btn btn-success pull-right" ng-disabled="proyectoForm.$invalid" ng-click="addProyecto()" style="margin-right:5px;">Guardar</button>
-			<button class="btn btn-success pull-right" ng-disabled="proyectoForm.$invalid" ng-click="guardaCambiosProyecto(proyecto.idProyecto)" style="margin-right:5px;">Editar</button>
+			<button class="btn btn-success pull-right" ng-disabled="proyectoForm.$invalid" ng-click="addProyecto()" ng-show="SeAgrega" style="margin-right:5px;">Guardar</button>
+			<button class="btn btn-success pull-right" ng-disabled="proyectoForm.$invalid" ng-click="guardaCambiosProyecto(proyecto.idProyecto)" ng-show="SeEdita" ng-hide="SeAgrega" style="margin-right:5px;">Editar</button>
 		</div>
 	</form>
 

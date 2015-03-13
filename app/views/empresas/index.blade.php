@@ -92,8 +92,8 @@
 		</div>
 			<div class="col-md-12" style="border-top:1px solid #eee; padding:10px; padding-bottom: 30px;">
 				<button class="btn btn-default pull-right" ng-click="setForm(0)">Cancelar</button>
-				<button class="btn btn-success pull-right" ng-disabled="empresaForm.$invalid" ng-click="addEmpresa()" style="margin-right:5px;">Guardar</button>
-				<button class="btn btn-success pull-right" ng-disabled="empresaForm.$invalid" ng-click="guardaCambiosEmpresa(empresa.idEmpresa)" style="margin-right:5px;">Editar</button>
+				<button class="btn btn-success pull-right" ng-disabled="empresaForm.$invalid" ng-click="addEmpresa()" ng-show="SeAgrega" style="margin-right:5px;">Guardar</button>
+				<button class="btn btn-success pull-right" ng-disabled="empresaForm.$invalid" ng-click="guardaCambiosEmpresa(empresa.idEmpresa)" ng-show="SeEdita" ng-hide="SeAgrega" style="margin-right:5px;">Editar</button>
 			</div>
 
 		@{{empresa}}

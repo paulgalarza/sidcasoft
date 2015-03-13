@@ -99,6 +99,8 @@
 	    		status:1,
 	    		idCliente:0,
 	    	};
+	    	$scope.SeAgrega = true;
+	    	console.log($scope.SeAgrega);
 	    	$scope.setForm(1);
 	    }
 
@@ -144,6 +146,9 @@
 
 	    $scope.editProyecto = function(idProyecto){
 	    	$scope.newProyecto();
+	    	$scope.SeAgrega = false;
+	    	$scope.SeEdita = true;
+	    	console.log($scope.SeEdita);
 	    	$scope.setProyecto(idProyecto);
 	    	$scope.formProyecto = 1;
 	    }
@@ -237,6 +242,8 @@
 	    		idTipoUsuario:null,
 	    		estatus:1,
 	    	};
+	    	$scope.SeAgrega = true;
+	    	console.log($scope.SeAgrega);
 	    	$scope.setForm(1);
 	    }
 
@@ -255,6 +262,9 @@
 
 	    $scope.editUsuario = function(idUsuario){
 	    	$scope.newUsuario();
+	    	$scope.SeAgrega = false;
+	    	$scope.SeEdita = true;
+	    	console.log($scope.SeEdita);
 	    	$scope.setUsuario(idUsuario);
 	    	$scope.formUsuario = 1;
 	    }
@@ -344,6 +354,8 @@
 	    		telefono:'',
 	    		estatus:1,
 	    	};
+	    	$scope.SeAgrega = true;
+	    	console.log($scope.SeAgrega);
 	    	$scope.setForm(1);
 	    }
 
@@ -362,6 +374,9 @@
 
 	    $scope.editEmpresa = function(idEmpresa){
 	    	$scope.newEmpresa();
+	    	$scope.SeAgrega = false;
+	    	$scope.SeEdita = true;
+	    	console.log($scope.SeEdita);
 	    	$scope.setEmpresa(idEmpresa);
 	    	$scope.formEmpresa = 1;
 	    }
@@ -454,6 +469,8 @@
 	    		telefono:'',
 	    		email:'',
 	    	};
+	    	$scope.SeAgrega = true;
+	    	console.log($scope.SeAgrega);
 	    	$scope.setForm(1);
 	    }
 
@@ -472,6 +489,9 @@
 
 	    $scope.editCliente = function(idCliente){
 	    	$scope.newCliente();
+	    	$scope.SeAgrega = false;
+	    	$scope.SeEdita = true;
+	    	console.log($scope.SeEdita);
 	    	$scope.setCliente(idCliente);
 	    	$scope.formCliente = 1;
 	    }
