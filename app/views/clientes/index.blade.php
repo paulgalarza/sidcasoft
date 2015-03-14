@@ -52,13 +52,13 @@
 	<form novalidate class="formulario item-animate" ng-show="formCliente" name="clienteForm" ng-submit="save(cliente)">
 		<div class="col-md-7">
 			<div class="form-group row">
-				<label class="control-label col-md-4">Nombre del Cliente:</label>	
+				<label class="control-label col-md-4">Nombre del Cliente:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="cliente.nombre" id="js-cliente-nombre">	
+					<input required class="form-control" type="text" ng-model="cliente.nombre" id="js-cliente-nombre">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Empresa:</label>	
+				<label class="control-label col-md-4">Empresa:</label>
 				<div class="col-md-8">
 					<select required class="form-control" name="nombreEmpresa" ng-model="cliente.idEmpresa" ng-options="c.idEmpresa as c.nombre for c in empresas">
 						<option value="" disabled="disabled" style="display:none">Seleccione</option>
@@ -66,19 +66,19 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Teléfono:</label>	
+				<label class="control-label col-md-4">Teléfono:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="cliente.telefono">	
+					<input required class="form-control" type="text" ng-model="cliente.telefono">
 				</div>
 			</div>
 				<div class="form-group row">
-				<label class="control-label col-md-4">Correo Electrónico:</label>	
+				<label class="control-label col-md-4">Correo Electrónico:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="cliente.email">	
+					<input required class="form-control" type="text" ng-model="cliente.email">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Estatus:</label>	
+				<label class="control-label col-md-4">Estatus:</label>
 				<div class="col-md-8">
 					<select required class="form-control" ng-model="cliente.estatus" ng-options="c.status as c.descripcion for c in estatus"></select>
 				</div>
@@ -87,7 +87,7 @@
 			<div class="col-md-12" style="border-top:1px solid #eee; padding:10px; padding-bottom: 30px;">
 				<button class="btn btn-default pull-right" ng-click="setForm(0)">Cancelar</button>
 				<button class="btn btn-success pull-right" ng-disabled="clienteForm.$invalid" ng-click="addCliente()" ng-show="SeAgrega" style="margin-right:5px;">Guardar</button>
-				<button class="btn btn-success pull-right" ng-disabled="clienteForm.$invalid" ng-click="guardaCambiosCliente(cliente.idCliente)" ng-show="SeEdita" ng-hide="SeAgrega" style="margin-right:5px;">Editar</button>
+				<button class="btn btn-success pull-right" ng-disabled="clienteForm.$invalid" ng-click="guardaCambiosCliente(cliente.idCliente)" ng-show="SeEdita" ng-hide="SeAgrega" style="margin-right:5px;">Guardar</button>
 			</div>
 
 		@{{cliente}}
