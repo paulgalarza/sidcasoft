@@ -1,36 +1,34 @@
 <?php
-
 class AuthController extends BaseController {
 
 	protected $layout = 'layouts.master';
-	
-	public function showLogin()
-	{
-		if(Auth::check())
-		{
-			//Si está autentificado lo mandamos a la raíz donde estara el mensaje de bienvenida.
-			return Redirect::to('/');
-		}
-
-		//Mostramos la vista login.blade.php
-		return View::make('login');
-	}
 
 	public function postLogin()
 	{
 		$userdata = array(
-			'usuario'=>Input::get('usuario'),
-			'password'=>Input::get('clave')
-		);	
-		
+			'usuario'=>Input::get('username'),
+			'password'=>Input::get('password')
+		);
+
 		if(Auth::attempt($userdata, true))
 		{
-			return Redirect::to('/');
+			return Response::json(array(
+					'status'	=> 'success',
+					'message'	=> 'Sesion iniciada con exito',
+					'data'		=> array(
+						'usuario' => Input::get('username')
+					)
+			));
 		}
 
-		return Redirect::to('login')
-					->with('mensaje_error', 'Clave incorrecta')
-					->withInput();
+		return Response::json(array(
+					'status'	=> 'fail',
+					'message'	=> 'Usuario o contraseña incorrectos',
+					'data' 		=> array(
+						'username' => Input::get('username'),
+						'password' => Input::get('password')
+					)
+		));
 	}
 
 	public function newPassword()
@@ -57,8 +55,8 @@ class AuthController extends BaseController {
                 $user = Auth::user();
                 $user->password = Hash::make(Input::get('newpassword'));
                 $user->save();
-               
-                   
+
+
                    if($user->save()){
                         return Redirect::to('password')->with('notice', 'Nueva contraseña guardada correctamente');
                    }

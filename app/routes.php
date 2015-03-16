@@ -1,14 +1,18 @@
 <?php
-Route::get('login','AuthController@showLogin');
+//Route::get('login','AuthController@showLogin');
 Route::post('login','AuthController@postLogin');
+
+Route::get('/', function(){
+  return View::make('index');
+});
 
 //Nos inica que las rutas que están dentro de él sólo serán mostradas si antes el usuario se ha autenticado.
 Route::group(array('before' => 'auth'), function()
 {
-    Route::get('/', function()
+    /*Route::get('/', function()
     {
         return View::make('home');
-    });
+    });*/
 
     Route::get('logout', 'AuthController@logOut');
 
@@ -36,7 +40,7 @@ Route::group(array('before' => 'auth'), function()
 	Route::post('proyectos/add','ProyectosController@add');
 
 	Route::put('proyectos/{id}','ProyectosController@update');
-	
+
 	Route::delete('proyectos/{id}',function($id){
 		$proyecto = Proyecto::find($id);
 		$proyecto->delete();
