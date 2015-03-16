@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('sidcasoft')
-  .controller('LoginIndexConroller',function($scope,$http){
+  .controller('LoginIndexConroller',function($scope,$http,$rootScope){
     $scope.logIn = function(){
       console.log("Login");
       var user = {
