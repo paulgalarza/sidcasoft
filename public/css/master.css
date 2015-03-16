@@ -1,0 +1,219 @@
+/*-----------------------------------------------------
+| 						LAYOUT STYLES
+|------------------------------------------------------*/
+body{
+	background: #F7F7F7;
+	font-family: 'Roboto', sans-serif;
+}
+h1,label{
+	color:#555;
+}
+.container-login{
+	max-width:400px;
+	margin:0 auto;
+	padding:10px;
+}
+.container-login h1{
+	margin: 40px auto;
+	width:250px;
+}
+.container-login label{
+	margin-top:10px;
+}
+.container-login input{
+	max-width:380px;
+}
+.container-login button{
+	width:100%;
+	margin: 20px 0px;
+}
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+.header{
+	text-align: center;
+	background-color: rgb(247, 247, 247);
+}
+.content{
+	background: white;
+	padding-top: 20px;
+}
+.margin-0{
+	margin: 0px;
+}
+.selected-row{
+	background: #008292 !important;
+	color: white;
+}
+.text-primary
+{
+	color:#008292;
+}
+.table-row{
+	cursor: pointer;
+}
+div.scroll{
+  height:400px;
+  width:auto;
+  overflow-y:scroll;
+  overflow-x:hidden;
+}
+.footer{
+	height: 180px;
+	background: #2D3134;
+	color: white;
+	text-align: left;
+}
+
+.img-header{
+	width: 100%;
+	max-width: 1280px;
+}
+@media (max-width: 1080px) {
+   .img-header {
+     display: none;
+   }
+ }
+ .control-label{
+ 	text-align: right;
+ 	color:#444;
+ }
+ .gray-color{
+ 	color:#888;
+ }
+
+ /*ANIMACION*/
+ .animate-grid.ng-hide{
+ 	left:200px;
+ }
+ .animate-grid{
+ 	webkit-transition: left 2s;
+    transition: left 2s;
+ }
+ .dropdown-menu.ng-isolate-scope{
+ 	width: 93%;
+ }
+ .formulario input.ng-invalid.ng-touched {
+    border-color: #a94442;
+  }
+
+ .formulario input.ng-valid.ng-touched {
+    border-color: #3c763d;
+  }
+  .formulario textarea.ng-invalid.ng-touched {
+    border-color: #a94442;
+  }
+
+ .formulario textarea.ng-valid.ng-touched {
+    border-color: #3c763d;
+  }
+
+  .formulario select.ng-invalid.ng-touched {
+    border-color: #a94442;
+  }
+
+ .formulario select.ng-valid.ng-touched {
+    border-color: #3c763d;
+  }
+  textarea.no-vert{
+  	textarea.vert { resize:none; }
+  }
+	.leftMenu{
+
+	}
+
+/*---------------------------------------
+|				@LAYOUT STYLE
+|---------------------------------------*/
+
+
+
+/*-----------------------------------------------------
+| 						LOGIN STYLES
+|------------------------------------------------------*/
+.title{
+	text-align: center;
+}
+.form-signin
+{
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+}
+.form-signin .form-signin-heading, .form-signin .checkbox
+{
+	margin-bottom: 10px;
+}
+.form-signin .checkbox
+{
+	font-weight: normal;
+}
+.form-signin .form-control
+{
+	position: relative;
+	font-size: 16px;
+	height: auto;
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.form-signin .form-control:focus
+{
+	z-index: 2;
+}
+.form-signin input[type="text"]
+{
+	margin-bottom: -1px;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"]
+{
+	margin-bottom: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+.account-wall
+{
+	margin-top: 20px;
+	padding: 40px 0px 20px 0px;
+	background-color: #f7f7f7;
+	-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.login-title
+{
+	color: #555;
+	font-size: 18px;
+	font-weight: 400;
+	display: block;
+}
+.profile-img
+{
+	width: 96px;
+	height: 96px;
+	margin: 0 auto 10px;
+	display: block;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+}
+.need-help
+{
+	margin-top: 10px;
+}
+.new-account
+{
+	display: block;
+	margin-top: 10px;
+}
+
+/*---------------------------------------
+|				@LOGIN STYLE
+|---------------------------------------*/
+
+
+
+/*-----------------------------------------------------
+| 						HOME STYLE
+|------------------------------------------------------*/
