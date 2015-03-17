@@ -1,6 +1,8 @@
+'use strict'
+
 angular.module('sidcasoft')
   .directive('navBar', function() {
-  return {
-    restrict: 'E',
-    templateUrl: '/proyectos/sidcasoft/public/templates/nav.html'
-  };
+    return {
+      templateUrl: 'templates/nav.html'
+    };
+  });

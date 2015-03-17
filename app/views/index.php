@@ -27,6 +27,10 @@
     <script src="js/controllers/login-index-controller.js"/></script>
     <script src="js/controllers/proyectos-index-controller.js"/></script>
 
+    <script src="js/services/service.js"/></script>
+
+    <script src="js/directives/navBar.js"/></script>
+
     <script src="js/vendor/jquery.min.js"></script>
     <script src="js/vendor/bootstrap.js"></script>
     <script src="js/vendor/sweet-alert.min.js"></script>
