@@ -53,36 +53,44 @@
 	<form novalidate class="formulario item-animate" ng-show="formProyecto" name="proyectoForm" ng-submit="save(proyecto)">
 		<div class="col-md-7">
 			<div class="form-group row">
-				<label class="control-label col-md-4">Nombre del Proyecto:</label>			
+				<label class="control-label col-md-4">Nombre del Proyecto:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="proyecto.nombre" id="js-proyecto-nombre">	
+					<input required class="form-control" type="text" ng-model="proyecto.nombre" id="js-proyecto-nombre">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Titulo del proyecto:</label>	
+				<label class="control-label col-md-4">Titulo del proyecto:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="proyecto.titulo">	
+					<input required class="form-control" type="text" ng-model="proyecto.titulo">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Descripcion:</label>	
+				<label class="control-label col-md-4">Descripcion:</label>
 				<div class="col-md-8">
-					<textarea required class="form-control" style="resize:none; resize: vertical;" rows="4" ng-model="proyecto.descripcion"></textarea>	
+					<textarea required class="form-control" style="resize:none; resize: vertical;" rows="4" ng-model="proyecto.descripcion"></textarea>
 					<span class="gray-color pull-right">@{{500-proyecto.descripcion.length}} Caracteres restantes</span>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Cliente:</label>	
+				<label class="control-label col-md-4">Cliente:</label>
 				<div class="col-md-8">
 					<input required type="text" ng-model="cliente" placeholder="" typeahead="cliente as cliente.nombre for cliente in getClientes($viewValue)" typeahead-loading="loadingClientes" class="form-control">
-    				<i ng-show="loadingClientes" class="glyphicon glyphicon-refresh"></i>	
+    				<i ng-show="loadingClientes" class="glyphicon glyphicon-refresh"></i>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="control-label col-md-4">Empresa:</label>
+				<div class="col-md-8">
+					<select required class="form-control" name="nombreEmpresa" ng-model="proyecto.idEmpresa" ng-options="c.idEmpresa as c.nombre for c in empresas">
+						<option value="" disabled="disabled" style="display:none">Seleccione</option>
+					</select>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="control-label col-md-4">Recursos materiales:</label>
 				<div class="col-md-8">
 					<input type="text" ng-enter="addRecurso(recurso)" ng-model="recurso" placeholder="" typeahead="recurso for recurso in getRecurso($viewValue)" typeahead-loading="loadingLocations" class="form-control">
-    				<i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>	
+    				<i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
 				</div>
 				<div class="col-md-8 col-md-offset-4">
 					<table class="table table-striped">
@@ -97,24 +105,24 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Costo:</label>	
+				<label class="control-label col-md-4">Costo:</label>
 				<div class="col-md-8">
-					<input valid-number required class="form-control" type="text" ng-model="proyecto.costoTotal">	
+					<input valid-number required class="form-control" type="text" ng-model="proyecto.costoTotal">
 				</div>
 			</div>
 		</div>
 		<div class="col-md-5">
-			<div class="form-group row">
-				<label class="control-label col-md-4">ID Proyecto:</label>	
+			<div class="form-group row" ng-hide="true">
+				<label class="control-label col-md-4">ID Proyecto:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="proyecto.idProyecto" disabled="disabled">	
+					<input required class="form-control" type="text" ng-model="proyecto.idProyecto" disabled="disabled">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Fecha Inicio:</label>	
+				<label class="control-label col-md-4">Fecha Inicio:</label>
 				<div class="col-md-8">
 					<p class="input-group">
-						<input required class="form-control" is-open="openedInicio" datepicker-options="dateOptions" ng-required="true" ng-model="proyecto.fechaInicio" datepicker-popup="@{{format}}">	
+						<input required class="form-control" is-open="openedInicio" datepicker-options="dateOptions" ng-required="true" ng-model="proyecto.fechaInicio" datepicker-popup="@{{format}}">
 						<span class="input-group-btn">
 	                		<button style="height: 34px;" type="button" class="btn btn-default" ng-click="open($event,1)"><i class="glyphicon glyphicon-calendar"></i></button>
 	              		</span>
@@ -122,10 +130,10 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Fecha Fin:</label>	
+				<label class="control-label col-md-4">Fecha Fin:</label>
 				<div class="col-md-8">
 					<p class="input-group">
-						<input required class="form-control" is-open="openedFin" datepicker-options="dateOptions" ng-required="true" ng-model="proyecto.fechaFin" datepicker-popup="@{{format}}">	
+						<input required class="form-control" is-open="openedFin" datepicker-options="dateOptions" ng-required="true" ng-model="proyecto.fechaFin" datepicker-popup="@{{format}}">
 						<span class="input-group-btn">
 	                		<button style="height: 34px;" type="button" class="btn btn-default" ng-click="open($event,0)"><i class="glyphicon glyphicon-calendar"></i></button>
 	              		</span>
@@ -133,7 +141,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Proceso:</label>	
+				<label class="control-label col-md-4">Proceso:</label>
 				<div class="col-md-8">
 					<select required class="form-control" name="proceso_id" ng-model="proyecto.idProceso"ng-options="p.idProceso as p.nombre for p in procesos">
 						<option value="" disabled="disabled" style="display:none">Seleccione</option>
@@ -141,16 +149,24 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Estatus:</label>	
+				<label class="control-label col-md-4">Estatus:</label>
 				<div class="col-md-8">
-					<select required class="form-control" ng-model="proyecto.status"ng-options="p.status as p.descripcion for p in estatus"></select>
+					<select required class="form-control" name="estatus_id" ng-model="proyecto.idEstatus" ng-options="p.idEstatus as p.nombre for p in estatus">
+						<option value="" disabled="disabled" style="display:none">Seleccione</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="control-label col-md-4">Estatus:</label>
+				<div class="col-md-8">
+					<select required class="form-control" ng-model="proyecto.status" ng-options="p.status as p.descripcion for p in estatus"></select>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-12" style="border-top:1px solid #eee; padding:10px; padding-bottom: 30px;">
 			<button class="btn btn-default pull-right" ng-click="setForm(0)">Cancelar</button>
 			<button class="btn btn-success pull-right" ng-disabled="proyectoForm.$invalid" ng-click="addProyecto()" ng-show="SeAgrega" style="margin-right:5px;">Guardar</button>
-			<button class="btn btn-success pull-right" ng-disabled="proyectoForm.$invalid" ng-click="guardaCambiosProyecto(proyecto.idProyecto)" ng-show="SeEdita" ng-hide="SeAgrega" style="margin-right:5px;">Editar</button>
+			<button class="btn btn-success pull-right" ng-disabled="proyectoForm.$invalid" ng-click="guardaCambiosProyecto(proyecto.idProyecto)" ng-show="SeEdita" ng-hide="SeAgrega" style="margin-right:5px;">Guardar</button>
 		</div>
 	</form>
 

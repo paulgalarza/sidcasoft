@@ -53,37 +53,37 @@
 	<form novalidate class="formulario item-animate" ng-show="formUsuario" name="usuarioForm" ng-submit="save(usuario)">
 		<div class="col-md-7">
 			<div class="form-group row">
-				<label class="control-label col-md-4">Nombre de Usuario:</label>	
+				<label class="control-label col-md-4">Nombre de Usuario:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="usuario.usuario">	
+					<input required class="form-control" type="text" ng-model="usuario.usuario">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Correo Electrónico:</label>	
+				<label class="control-label col-md-4">Correo Electrónico:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="usuario.email">	
+					<input required class="form-control" type="text" ng-model="usuario.email">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Nombre del Personal:</label>			
+				<label class="control-label col-md-4">Nombre del Personal:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="usuario.nombre" id="js-usuario-nombre">	
+					<input required class="form-control" type="text" ng-model="usuario.nombre" id="js-usuario-nombre">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Domicilio:</label>	
+				<label class="control-label col-md-4">Domicilio:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="usuario.domicilio">	
+					<input required class="form-control" type="text" ng-model="usuario.domicilio">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Teléfono:</label>	
+				<label class="control-label col-md-4">Teléfono:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="usuario.telefono">	
+					<input required class="form-control" type="text" ng-model="usuario.telefono">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Tipo de Usuario:</label>	
+				<label class="control-label col-md-4">Tipo de Usuario:</label>
 				<div class="col-md-8">
 					<select required class="form-control" name="tipoUsuario" ng-model="usuario.idTipoUsuario" ng-options="u.idTipoUsuario as u.descripcion for u in tipoUsuario">
 						<option value="" disabled="disabled" style="display:none">Seleccione</option>
@@ -91,16 +91,16 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Password:</label>	
+				<label class="control-label col-md-4">Password:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="password" ng-model="usuario.password">	
+					<input required class="form-control" type="password" ng-model="usuario.password">
 				</div>
 			</div>
 		</div>
 			<div class="col-md-12" style="border-top:1px solid #eee; padding:10px; padding-bottom: 30px;">
 				<button class="btn btn-default pull-right" ng-click="setForm(0)">Cancelar</button>
 				<button class="btn btn-success pull-right" ng-disabled="usuarioForm.$invalid" ng-click="addUsuario()" ng-show="SeAgrega" style="margin-right:5px;">Guardar</button>
-				<button class="btn btn-success pull-right" ng-disabled="usuarioForm.$invalid" ng-click="guardaCambiosUsuario(usuario.idUsuario)" ng-show="SeEdita" ng-hide="SeAgrega" style="margin-right:5px;">Editar</button>
+				<button class="btn btn-success pull-right" ng-disabled="usuarioForm.$invalid" ng-click="guardaCambiosUsuario(usuario.idUsuario)" ng-show="SeEdita" ng-hide="SeAgrega" style="margin-right:5px;">Guardar</button>
 		</div>
 
 		@{{usuario}}

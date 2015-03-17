@@ -54,37 +54,37 @@
 	<form novalidate class="formulario item-animate" ng-show="formEmpresa" name="empresaForm" ng-submit="save(empresa)">
 		<div class="col-md-7">
 			<div class="form-group row">
-				<label class="control-label col-md-4">Nombre de la Empresa:</label>	
+				<label class="control-label col-md-4">Nombre de la Empresa:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="empresa.nombre" id="js-empresa-nombre">	
+					<input required class="form-control" type="text" ng-model="empresa.nombre" id="js-empresa-nombre">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Encargado de la empresa:</label>	
+				<label class="control-label col-md-4">Encargado de la empresa:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="empresa.encargado">	
+					<input required class="form-control" type="text" ng-model="empresa.encargado">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">RFC:</label>			
+				<label class="control-label col-md-4">RFC:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="empresa.RFC">	
+					<input required class="form-control" type="text" ng-model="empresa.RFC">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Dirección:</label>	
+				<label class="control-label col-md-4">Dirección:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="empresa.direccion">	
+					<input required class="form-control" type="text" ng-model="empresa.direccion">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Teléfono:</label>	
+				<label class="control-label col-md-4">Teléfono:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="empresa.telefono">	
+					<input required class="form-control" type="text" ng-model="empresa.telefono">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-4">Estatus:</label>	
+				<label class="control-label col-md-4">Estatus:</label>
 				<div class="col-md-8">
 					<select required class="form-control" ng-model="empresa.estatus" ng-options="e.status as e.descripcion for e in estatus"></select>
 				</div>
@@ -93,7 +93,7 @@
 			<div class="col-md-12" style="border-top:1px solid #eee; padding:10px; padding-bottom: 30px;">
 				<button class="btn btn-default pull-right" ng-click="setForm(0)">Cancelar</button>
 				<button class="btn btn-success pull-right" ng-disabled="empresaForm.$invalid" ng-click="addEmpresa()" ng-show="SeAgrega" style="margin-right:5px;">Guardar</button>
-				<button class="btn btn-success pull-right" ng-disabled="empresaForm.$invalid" ng-click="guardaCambiosEmpresa(empresa.idEmpresa)" ng-show="SeEdita" ng-hide="SeAgrega" style="margin-right:5px;">Editar</button>
+				<button class="btn btn-success pull-right" ng-disabled="empresaForm.$invalid" ng-click="guardaCambiosEmpresa(empresa.idEmpresa)" ng-show="SeEdita" ng-hide="SeAgrega" style="margin-right:5px;">Guardar</button>
 			</div>
 
 		@{{empresa}}

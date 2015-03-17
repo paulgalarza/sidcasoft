@@ -23,8 +23,10 @@
     <script src="js/app.js"/></script>
     <script src="js/routes.js"/></script>
     <script src="js/vendor/smart-table.min.js"/></script>
+    <script src="js/vendor/ui-bootstrap.min.js"/></script>
 
     <script src="js/controllers/login-index-controller.js"/></script>
+    <script src="js/controllers/proyectos-index-controller.js"/></script>
 
     <script src="js/vendor/jquery.min.js"/></script>
     <script src="js/vendor/bootstrap.js"/></script>

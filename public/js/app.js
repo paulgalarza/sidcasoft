@@ -1,3 +1,5 @@
 'use strict'
 
-angular.module('sidcasoft',['ngRoute']);
+angular.module('sidcasoft',['ngRoute','smart-table','ui.bootstrap']);
+
+	
