@@ -79,6 +79,14 @@
 				</div>
 			</div>
 			<div class="form-group row">
+				<label class="control-label col-md-4">Empresa:</label>
+				<div class="col-md-8">
+					<select required class="form-control" name="nombreEmpresa" ng-model="proyecto.idEmpresa" ng-options="c.idEmpresa as c.nombre for c in empresas">
+						<option value="" disabled="disabled" style="display:none">Seleccione</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group row">
 				<label class="control-label col-md-4">Recursos materiales:</label>
 				<div class="col-md-8">
 					<input type="text" ng-enter="addRecurso(recurso)" ng-model="recurso" placeholder="" typeahead="recurso for recurso in getRecurso($viewValue)" typeahead-loading="loadingLocations" class="form-control">
@@ -104,7 +112,7 @@
 			</div>
 		</div>
 		<div class="col-md-5">
-			<div class="form-group row">
+			<div class="form-group row" ng-hide="true">
 				<label class="control-label col-md-4">ID Proyecto:</label>
 				<div class="col-md-8">
 					<input required class="form-control" type="text" ng-model="proyecto.idProyecto" disabled="disabled">
@@ -143,7 +151,15 @@
 			<div class="form-group row">
 				<label class="control-label col-md-4">Estatus:</label>
 				<div class="col-md-8">
-					<select required class="form-control" ng-model="proyecto.status"ng-options="p.status as p.descripcion for p in estatus"></select>
+					<select required class="form-control" name="estatus_id" ng-model="proyecto.idEstatus" ng-options="p.idEstatus as p.nombre for p in estatus">
+						<option value="" disabled="disabled" style="display:none">Seleccione</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="control-label col-md-4">Estatus:</label>
+				<div class="col-md-8">
+					<select required class="form-control" ng-model="proyecto.status" ng-options="p.status as p.descripcion for p in estatus"></select>
 				</div>
 			</div>
 		</div>
