@@ -7,6 +7,7 @@
         {{ HTML::style('css/style.css'); }}
         {{ HTML::style('css/sweet-alert.css'); }}
         {{ HTML::style('css/font-awesome.min.css'); }}
+				{{ HTML::style('css/card.css'); }}
         <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     </head>
     <body ng-app="app">
@@ -24,7 +25,7 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li class="{{ Request::is('/') ? 'active' : ''}}">
-                                <a href="{{URL::to('/')}}" style="height:50px;"><span class="glyphicon glyphicon-home"></span></a>
+                                <a href="{{URL::to('/')}}" style="height:50px;"><i class="fa fa-bars"></i> Dashboard</a>
                             </li>
 
                             @foreach ( DB::table('pages')->where('navbar', '1')->get() as $page)
@@ -51,7 +52,7 @@
                 </nav>
             @endif
         </div>
-        <div class="container content">
+        <div class="container">
             @yield('content')
         </div>
         <div class="footer">
@@ -98,7 +99,7 @@
                     <a style="color:white;">©Todos los derechos reservados</a>
                 </div>
             </div>
-            
+
         </div>
     <script src="https://code.jquery.com/jquery.js"></script>
     {{ HTML::script('js/jquery-2.1.3.min.js'); }}
@@ -109,6 +110,7 @@
     {{ HTML::script('js/master.js'); }}
     {{ HTML::script('js/smart-table.min.js'); }}
     {{ HTML::script('js/ui-bootstrap-tpls-0.12.0.min.js'); }}
-    
+		{{ HTML::script('js/card.js'); }}
+
     </body>
 </html>

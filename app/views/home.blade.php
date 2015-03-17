@@ -2,9 +2,14 @@
 @section('content')
 
 
-	
-<section ng-controller="homeController as home">
 
+<section ng-controller="homeController as home">
+	<card></card>
+	<card></card>
+	<card></card>
+	<card></card>
+	<card></card>
+	<card></card>
 	<h1 class="text-primary">Catálogo de proyecto</h1>
 	<hr>
 		<div class="col-md-4">
@@ -45,7 +50,7 @@
        				<p>Costo: <span class="badge">15%</span></p>
        				<p>Fecha de inicio: <span class="badge">@{{proyecto.fechaInicio | date}}</span></p>
        				<p>Estatus: <span class="badge">En proceso...</span></p>
-	    		</div>	    		
+	    		</div>
 	    	</div>
 		</div>
 
