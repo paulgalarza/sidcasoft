@@ -32,7 +32,7 @@
 		};
 	});
 
-	//			PROYECTOS CONTROLLER 
+	//			PROYECTOS CONTROLLER
 	app.controller('proyectosController', function($http,$scope,dataService){
 
 		$scope.itemsByPage=10;
@@ -96,7 +96,7 @@
 	    		costoTotal:null,
 	    		recursos:[],
 	    		idProceso:null,
-	    		status:1,
+	    		idEstatus:1,
 	    		idCliente:0,
 	    	};
 	    	$scope.SeAgrega = true;
@@ -194,13 +194,20 @@
 	    dataService.getProcesos().then(function(procesos){
                       $scope.procesos = procesos;
                                      });
-		
+
+			/*dataService.getEstatus().then(function(estatus){
+				$scope.estatus = estatus;
+			});*/
+
+			dataService.getEmpresas().then(function(empresas){
+				$scope.empresas = empresas;
+			});
 	});
 
 	//USUARIOS CONTROLLER
 
 	app.controller('usuariosController', function($http,$scope,dataService){
-		
+
 		$scope.itemsByPage=10;
 	    $scope.usuarios = [];
 	    $scope.displayedCollection = [];
@@ -317,7 +324,7 @@
 	//EMPRESAS CONTROLLER
 
 	app.controller('empresasController', function($http,$scope,dataService){
-		
+
 		$scope.itemsByPage=10;
 	    $scope.empresas = [];
 	    $scope.displayedCollection = [];
@@ -429,7 +436,7 @@
 	//CLIENTES CONTROLLER
 
 	app.controller('clientesController', function($http,$scope,dataService){
-		
+
 		$scope.itemsByPage=10;
 	    $scope.clientes = [];
 	    $scope.displayedCollection = [];
