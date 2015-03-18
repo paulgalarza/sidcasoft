@@ -4,6 +4,14 @@ angular.module('app')
   })
   .directive('card', function(){
     return{
-      templateUrl: 'templates/card.html'
+      restric:'E',
+      templateUrl: 'templates/card.html',
+      scope:{
+        header:"@",
+        status:"@",
+        empresa:"@",
+        cliente:"@",
+        descripcion:"@",
+      }
     }
   });

@@ -1,17 +1,17 @@
-<div class="col-xl-4 col-md-6 col-sm-12 card">
+<div class="col-xl-4 col-md-4 col-sm-12 card">
   <div class="cr-proyecto">
     <div class="cr-header">
-      <h2>Sistema de gestion de proyectos</h2>
+      <h4>{{header}}</h4>
     </div>
     <div class="cr-estatus">
-      <span>Propuesto</span>
+      <span>{{status}}</span>
     </div>
     <div class="cr-content">
-      <h3>Empresa para la prueba <br>
-        <small><strong>Ing.</strong> Galarza Cervantes Paul Alfonso</small>
+      <h3>{{empresa}}<br>
+        <small>{{cliente}}</small>
       </h3>
       <p class="text-justify">
-        Es una herramienta muy fácil e intuitiva. De forma muy ágil, el gestor del proyecto crea hitos y tareas y las asigna a los miembros del equipo. A partir de ahí se...
+        {{descripcion | limitTo : 180}}...
       </p>
       <a href="#" class="text-primary" style="float:right;">Ver mas</a>
     </div>

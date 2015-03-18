@@ -13,7 +13,7 @@
 
 		$scope.proyectos = [];
 		$scope.displayedCollection = [];
-		$scope.proyecto = {};
+		//$scope.proyecto = {};
 
 
 		dataService.getProyectos().then(function(proyectos){
