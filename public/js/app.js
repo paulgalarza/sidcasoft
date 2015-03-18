@@ -549,27 +549,38 @@
 
 	});
 
-	/***			HOME CONTROLLER 												***/
+	/***			DOCUMENTOS CONTROLLER 												***/
 	app.controller('documentosController',function($http,$scope,dataService){
 			$scope.options = [
-				"Requerimientos",
 				"Descripción de proyecto",
+				"Requerimientos",
 				"Plan de proyecto",
 				"Reporte de actividades",
-				"Reporte de evolución",
-				"Paquete de salidas"
+				"Reporte de evolución"
 			];
 
 			$scope.selected = "";
 
 			$scope.isSelected = function(option){
-				debugger
 				return $scope.selected == option;
 			}
 
 			$scope.setTab = function(tab){
 				$scope.selected = tab;
 			}
+
+			$scope.getClientes = function(nombre){
+	    	return dataService.getClientes(nombre).then(function(clientes){
+	    		return clientes;
+	    	});
+
+	    }
+
+	    	$scope.getEmpresas = function(nombre){
+	    	return dataService.getEmpresas(nombre).then(function(empresas){
+	    		return empresas;
+	    	});
+	    }
 	});
 
 
