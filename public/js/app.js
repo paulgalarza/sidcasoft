@@ -50,7 +50,8 @@
 		    startingDay: 1
 		};
 		$scope.estatus = [
-			{status:1,descripcion:"Activo"},
+			{status:2,descripcion:"Activo"},
+			{status:1,descripcion:"Propuesto"},
 			{status:0,descripcion:"Inactivo"}
 		];
 
@@ -96,7 +97,8 @@
 	    		costoTotal:null,
 	    		recursos:[],
 	    		idProceso:null,
-	    		idEstatus:1,
+	    		status:1,
+	    		//idEstatus:1,
 	    		idCliente:0,
 	    	};
 	    	$scope.SeAgrega = true;

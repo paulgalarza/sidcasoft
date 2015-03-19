@@ -151,14 +151,6 @@
 			<div class="form-group row">
 				<label class="control-label col-md-4">Estatus:</label>
 				<div class="col-md-8">
-					<select required class="form-control" name="estatus_id" ng-model="proyecto.idEstatus" ng-options="p.idEstatus as p.nombre for p in estatus">
-						<option value="" disabled="disabled" style="display:none">Seleccione</option>
-					</select>
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="control-label col-md-4">Estatus:</label>
-				<div class="col-md-8">
 					<select required class="form-control" ng-model="proyecto.status" ng-options="p.status as p.descripcion for p in estatus"></select>
 				</div>
 			</div>
