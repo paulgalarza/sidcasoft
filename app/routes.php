@@ -29,8 +29,7 @@ Route::group(array('before' => 'auth'), function()
 			DB::table('proyecto')
 				->join('cliente','proyecto.idCliente','=','cliente.idCliente')
         ->join('empresa','proyecto.idEmpresa','=','empresa.idEmpresa')
-        ->join('estatus','proyecto.idEstatus','=','estatus.idEstatus')
-				->select('proyecto.*','cliente.nombre AS cliente','empresa.nombre as empresa','estatus.nombre as estatus')
+				->select('proyecto.*','cliente.nombre AS cliente','empresa.nombre as empresa')
 				->get()
 		);
 	});

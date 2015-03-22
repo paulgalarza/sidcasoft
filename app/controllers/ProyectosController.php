@@ -12,7 +12,7 @@ class ProyectosController extends BaseController {
 		$proyecto->idEmpresa = Input::get('idEmpresa');
 		$proyecto->titulo = Input::get('titulo');
 		$proyecto->fechaInicio = Input::get('fechaInicio');
-		$proyecto->fechaFin = Input::get('fechaFin');
+		$proyecto->fechaFinal = Input::get('fechaFin');
 		$proyecto->idProceso = Input::get('idProceso');
 		$proyecto->costoTotal = Input::get('costoTotal');
 		$proyecto->status = Input::get('status');
@@ -36,7 +36,7 @@ class ProyectosController extends BaseController {
 		$proyecto->idEmpresa = Input::get('idEmpresa');
 		$proyecto->titulo = Input::get('titulo');
 		$proyecto->fechaInicio = Input::get('fechaInicio');
-		$proyecto->fechaFin = Input::get('fechaFin');
+		$proyecto->fechaFinal = Input::get('fechaFin');
 		$proyecto->idProceso = Input::get('idProceso');
 		$proyecto->costoTotal = Input::get('costoTotal');
 		$proyecto->status = Input::get('status');

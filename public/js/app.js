@@ -50,9 +50,9 @@
 		    startingDay: 1
 		};
 		$scope.estatus = [
-			{status:2,descripcion:"Activo"},
 			{status:1,descripcion:"Propuesto"},
-			{status:0,descripcion:"Inactivo"}
+			{status:0,descripcion:"Cancelado"},
+			{status:2,descripcion:"Activo"}
 		];
 
 		$scope.removeRecurso = function(recurso){
@@ -98,7 +98,6 @@
 	    		recursos:[],
 	    		idProceso:null,
 	    		status:1,
-	    		//idEstatus:1,
 	    		idCliente:0,
 	    	};
 	    	$scope.SeAgrega = true;
@@ -120,7 +119,14 @@
 		}
 
 	    $scope.getStatus = function(Status){
-	    	return Status ? 'Activo' : 'Cancelado';
+	    	if(Status === 1)
+	    		Status = 'Propuesto';
+	    	else if(Status === 2)
+	    		Status = 'Activo';
+	    	else
+	    		Status = 'Cancelado';
+	    	return Status;
+	    	//return Status ? 'Propuesto' : 'Activo';
 	    }
 
 	    $scope.removeProyecto = function(idProyecto){
@@ -197,13 +203,9 @@
                       $scope.procesos = procesos;
                                      });
 
-			/*dataService.getEstatus().then(function(estatus){
-				$scope.estatus = estatus;
-			});*/
-
-			dataService.getEmpresas().then(function(empresas){
-				$scope.empresas = empresas;
-			});
+		dataService.getEmpresas().then(function(empresas){
+			$scope.empresas = empresas;
+		});
 	});
 
 	//USUARIOS CONTROLLER

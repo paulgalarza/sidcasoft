@@ -107,7 +107,7 @@
 			<div class="form-group row">
 				<label class="control-label col-md-4">Costo:</label>
 				<div class="col-md-8">
-					<input valid-number required class="form-control" type="text" ng-model="proyecto.costoTotal">
+					<input valid-number class="form-control" type="text" ng-model="proyecto.costoTotal">
 				</div>
 			</div>
 		</div>
@@ -133,7 +133,7 @@
 				<label class="control-label col-md-4">Fecha Fin:</label>
 				<div class="col-md-8">
 					<p class="input-group">
-						<input required class="form-control" is-open="openedFin" datepicker-options="dateOptions" ng-required="true" ng-model="proyecto.fechaFin" datepicker-popup="@{{format}}">
+						<input class="form-control" is-open="openedFin" datepicker-options="dateOptions" ng-required="false" ng-model="proyecto.fechaFin" datepicker-popup="@{{format}}">
 						<span class="input-group-btn">
 	                		<button style="height: 34px;" type="button" class="btn btn-default" ng-click="open($event,0)"><i class="glyphicon glyphicon-calendar"></i></button>
 	              		</span>
