@@ -148,7 +148,7 @@
 					</select>
 				</div>
 			</div>
-			<div class="form-group row">
+			<div class="form-group row" ng-show="SeEdita" ng-hide="SeAgrega">
 				<label class="control-label col-md-4">Estatus:</label>
 				<div class="col-md-8">
 					<select required class="form-control" ng-model="proyecto.status" ng-options="p.status as p.descripcion for p in estatus"></select>
