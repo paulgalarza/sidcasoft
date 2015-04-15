@@ -56,31 +56,31 @@
 			<div class="form-group row">
 				<label class="control-label col-md-4">Nombre de la Empresa:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="empresa.nombre" id="js-empresa-nombre">
+					<input required class="form-control" type="text" maxlength="100" ng-model="empresa.nombre" id="js-empresa-nombre">
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="control-label col-md-4">Encargado de la empresa:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="empresa.encargado">
+					<input required class="form-control" type="text" maxlength="100" ng-model="empresa.encargado">
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="control-label col-md-4">RFC:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="empresa.RFC">
+					<input required class="form-control" type="text" maxlength="13" ng-model="empresa.RFC">
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="control-label col-md-4">Dirección:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="empresa.direccion">
+					<input required class="form-control" type="text" maxlength="200" ng-model="empresa.direccion">
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="control-label col-md-4">Teléfono:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="empresa.telefono">
+					<input required class="form-control" type="text" maxlength="10" ng-model="empresa.telefono">
 				</div>
 			</div>
 			<div class="form-group row">

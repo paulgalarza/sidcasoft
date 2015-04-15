@@ -55,31 +55,31 @@
 			<div class="form-group row">
 				<label class="control-label col-md-4">Nombre de Usuario:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="usuario.usuario">
+					<input required class="form-control" type="text" maxlength="255" ng-model="usuario.usuario">
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="control-label col-md-4">Correo Electrónico:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="usuario.email">
+					<input required class="form-control" type="text" maxlength="60" ng-model="usuario.email">
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="control-label col-md-4">Nombre del Personal:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="usuario.nombre" id="js-usuario-nombre">
+					<input required class="form-control" type="text" maxlength="60" ng-model="usuario.nombre" id="js-usuario-nombre">
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="control-label col-md-4">Domicilio:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="usuario.domicilio">
+					<input required class="form-control" type="text" maxlength="100" ng-model="usuario.domicilio">
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="control-label col-md-4">Teléfono:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="usuario.telefono">
+					<input required class="form-control" type="text" maxlength="10" ng-model="usuario.telefono">
 				</div>
 			</div>
 			<div class="form-group row">
@@ -93,7 +93,7 @@
 			<div class="form-group row">
 				<label class="control-label col-md-4">Password:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="password" ng-model="usuario.password">
+					<input required class="form-control" type="password" maxlength="100" ng-model="usuario.password">
 				</div>
 			</div>
 		</div>

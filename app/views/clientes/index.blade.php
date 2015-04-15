@@ -54,7 +54,7 @@
 			<div class="form-group row">
 				<label class="control-label col-md-4">Nombre del Cliente:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="cliente.nombre" id="js-cliente-nombre">
+					<input required class="form-control" type="text" maxlength="100" ng-model="cliente.nombre" id="js-cliente-nombre">
 				</div>
 			</div>
 			<div class="form-group row">
@@ -68,13 +68,13 @@
 			<div class="form-group row">
 				<label class="control-label col-md-4">Teléfono:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="cliente.telefono">
+					<input required class="form-control" type="text" maxlength="10" ng-model="cliente.telefono">
 				</div>
 			</div>
 				<div class="form-group row">
 				<label class="control-label col-md-4">Correo Electrónico:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" ng-model="cliente.email">
+					<input required class="form-control" type="text" maxlength="100" ng-model="cliente.email">
 				</div>
 			</div>
 			<div class="form-group row">

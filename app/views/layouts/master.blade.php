@@ -110,7 +110,6 @@
     {{ HTML::script('js/master.js'); }}
     {{ HTML::script('js/smart-table.min.js'); }}
     {{ HTML::script('js/ui-bootstrap-tpls-0.12.0.min.js'); }}
-		{{ HTML::script('js/card.js'); }}
-
+	{{ HTML::script('js/card.js'); }}
     </body>
 </html>
