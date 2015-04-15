@@ -61,7 +61,7 @@
 			<div class="form-group row">
 				<label class="control-label col-md-4">Correo Electrónico:</label>
 				<div class="col-md-8">
-					<input required class="form-control" type="text" maxlength="60" ng-model="usuario.email">
+					<input required class="form-control" type="email" maxlength="60" ng-model="usuario.email">
 				</div>
 			</div>
 			<div class="form-group row">
