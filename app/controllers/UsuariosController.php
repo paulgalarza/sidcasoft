@@ -36,6 +36,7 @@ class UsuariosController extends BaseController {
 		$usuarios->nombre = Input::get('nombre');
 		$usuarios->domicilio = Input::get('domicilio');
 		$usuarios->telefono = Input::get('telefono');
+		$usuarios->idTipoUsuario = Input::get('idTipoUsuario');
 		$usuarios->estatus = Input::get('estatus');
 		$usuarios->save();
 
