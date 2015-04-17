@@ -154,6 +154,44 @@
 						<select required class="form-control" ng-model="proyecto.status" ng-options="p.status as p.descripcion for p in estatus"></select>
 					</div>
 				</div>
+				<!--
+				<div class="form-group row">
+					<label class="control-label col-md-4">RAP:</label>
+					<div class="col-md-8">
+						<select required class="form-control" ng-model="#" ng-options="#"></select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="control-label col-md-4">RCP:</label>
+					<div class="col-md-8">
+						<select required class="form-control" ng-model="#" ng-options="#"></select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="control-label col-md-4">Analista:</label>
+					<div class="col-md-8">
+						<select required class="form-control" ng-model="#" ng-options="#"></select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="control-label col-md-4">Arquitecto:</label>
+					<div class="col-md-8">
+						<select required class="form-control" ng-model="#" ng-options="#"></select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="control-label col-md-4">Desarrollador:</label>
+					<div class="col-md-8">
+						<select required class="form-control" ng-model="#" ng-options="#"></select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="control-label col-md-4">Tester:</label>
+					<div class="col-md-8">
+						<select required class="form-control" ng-model="#" ng-options="#"></select>
+					</div>
+				</div>
+			-->
 			</div>
 			<div class="col-md-12" style="border-top:1px solid #eee; padding:10px; padding-bottom: 30px;">
 				<button class="btn btn-default pull-right" ng-click="setForm(0)">Cancelar</button>
