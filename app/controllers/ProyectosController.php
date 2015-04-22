@@ -16,6 +16,12 @@ class ProyectosController extends BaseController {
 		$proyecto->idProceso = Input::get('idProceso');
 		$proyecto->costoTotal = Input::get('costoTotal');
 		$proyecto->status = Input::get('status');
+		$proyecto->usuarioRAP = Input::get('usuarioRAP');
+		$proyecto->usuarioRCP = Input::get('usuarioRCP');
+		$proyecto->usuarioAnalista = Input::get('usuarioAnalista');
+		$proyecto->usuarioArquitecto = Input::get('usuarioArquitecto');
+		$proyecto->usuarioDesarrollador = Input::get('usuarioDesarrollador');
+		$proyecto->usuarioTester = Input::get('usuarioTester');
 		//$proyecto->estatus = Input::get('idEstatus');
 		$proyecto->idRecMat = 1;
 		$proyecto->save();
@@ -40,6 +46,12 @@ class ProyectosController extends BaseController {
 		$proyecto->idProceso = Input::get('idProceso');
 		$proyecto->costoTotal = Input::get('costoTotal');
 		$proyecto->status = Input::get('status');
+		$proyecto->usuarioRAP = Input::get('usuarioRAP');
+		$proyecto->usuarioRCP = Input::get('usuarioRCP');
+		$proyecto->usuarioAnalista = Input::get('usuarioAnalista');
+		$proyecto->usuarioArquitecto = Input::get('usuarioArquitecto');
+		$proyecto->usuarioDesarrollador = Input::get('usuarioDesarrollador');
+		$proyecto->usuarioTester = Input::get('usuarioTester');
 		//$proyecto->estatus = Input::get('idEstatus');
 		$proyecto->idRecMat = 1;
 		$proyecto->save();

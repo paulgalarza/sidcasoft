@@ -49,6 +49,60 @@ Route::group(array('before' => 'auth'), function()
 		);
 	});
 
+	Route::get('usuariorap/search',function(){
+		return Response::json(
+			DB::table('usuarios')
+				->select('usuarios.nombre', 'usuarios.idUsuario as usuarioRAP')
+				->where('usuarios.idTipoUsuario', '=', 2)
+				->get()
+		);
+	});
+
+	Route::get('usuariorcp/search',function(){
+		return Response::json(
+			DB::table('usuarios')
+				->select('usuarios.nombre', 'usuarios.idUsuario as usuarioRCP')
+				->where('usuarios.idTipoUsuario', '=', 1)
+				->get()
+		);
+	});
+
+	Route::get('usuarioanalista/search',function(){
+		return Response::json(
+			DB::table('usuarios')
+				->select('usuarios.nombre', 'usuarios.idUsuario as usuarioAnalista')
+				->where('usuarios.idTipoUsuario', '=', 3)
+				->get()
+		);
+	});
+
+	Route::get('usuarioarquitecto/search',function(){
+		return Response::json(
+			DB::table('usuarios')
+				->select('usuarios.nombre', 'usuarios.idUsuario as usuarioArquitecto')
+				->where('usuarios.idTipoUsuario', '=', 4)
+				->get()
+		);
+	});
+
+	Route::get('usuariodesarrollador/search',function(){
+		return Response::json(
+			DB::table('usuarios')
+				->select('usuarios.nombre', 'usuarios.idUsuario as usuarioDesarrollador')
+				->where('usuarios.idTipoUsuario', '=', 5)
+				->get()
+		);
+	});
+
+	Route::get('usuariotester/search',function(){
+		return Response::json(
+			DB::table('usuarios')
+				->select('usuarios.nombre', 'usuarios.idUsuario as usuarioTester')
+				->where('usuarios.idTipoUsuario', '=', 6)
+				->get()
+		);
+	});
+
 	Route::get('usuarios',function(){
 		return View::make('usuarios/index');
 	});

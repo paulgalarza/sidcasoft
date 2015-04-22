@@ -151,47 +151,59 @@
 				<div class="form-group row" ng-show="SeEdita" ng-hide="SeAgrega">
 					<label class="control-label col-md-4">Estatus:</label>
 					<div class="col-md-8">
-						<select required class="form-control" ng-model="proyecto.status" ng-options="p.status as p.descripcion for p in estatus"></select>
+						<select required class="form-control" ng-model="proyecto.status" ng-options="p.status as p.descripcion for p in estatus">
+							<option value="" disabled="disabled" style="display:none">Seleccione</option>
+						</select>
 					</div>
 				</div>
-				<!--
 				<div class="form-group row">
 					<label class="control-label col-md-4">RAP:</label>
 					<div class="col-md-8">
-						<select required class="form-control" ng-model="#" ng-options="#"></select>
+						<select required class="form-control" name="usuarioRAP" ng-model="proyecto.usuarioRAP" ng-options="p.usuarioRAP as p.nombre for p in usuarioRAP">
+							<option value="" disabled="disabled" style="display:none">Seleccione</option>
+						</select>
 					</div>
-				</div>
+				</div>				
 				<div class="form-group row">
 					<label class="control-label col-md-4">RCP:</label>
 					<div class="col-md-8">
-						<select required class="form-control" ng-model="#" ng-options="#"></select>
+						<select required class="form-control" name="usuarioRCP" ng-model="proyecto.usuarioRCP" ng-options="p.usuarioRCP as p.nombre for p in usuarioRCP">
+							<option value="" disabled="disabled" style="display:none">Seleccione</option>
+						</select>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="control-label col-md-4">Analista:</label>
 					<div class="col-md-8">
-						<select required class="form-control" ng-model="#" ng-options="#"></select>
+						<select required class="form-control" name="usuarioAnalista" ng-model="proyecto.usuarioAnalista" ng-options="p.usuarioAnalista as p.nombre for p in usuarioAnalista">
+							<option value="" disabled="disabled" style="display:none">Seleccione</option>
+						</select>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="control-label col-md-4">Arquitecto:</label>
 					<div class="col-md-8">
-						<select required class="form-control" ng-model="#" ng-options="#"></select>
+						<select required class="form-control" name="usuarioArquitecto" ng-model="proyecto.usuarioArquitecto" ng-options="p.usuarioArquitecto as p.nombre for p in usuarioArquitecto">
+							<option value="" disabled="disabled" style="display:none">Seleccione</option>
+						</select>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="control-label col-md-4">Desarrollador:</label>
 					<div class="col-md-8">
-						<select required class="form-control" ng-model="#" ng-options="#"></select>
+						<select required class="form-control" name="usuarioDesarrollador" ng-model="proyecto.usuarioDesarrollador" ng-options="p.usuarioDesarrollador as p.nombre for p in usuarioDesarrollador">
+							<option value="" disabled="disabled" style="display:none">Seleccione</option>
+						</select>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="control-label col-md-4">Tester:</label>
 					<div class="col-md-8">
-						<select required class="form-control" ng-model="#" ng-options="#"></select>
+						<select required class="form-control" name="usuarioTester" ng-model="proyecto.usuarioTester" ng-options="p.usuarioTester as p.nombre for p in usuarioTester">
+							<option value="" disabled="disabled" style="display:none">Seleccione</option>
+						</select>
 					</div>
 				</div>
-			-->
 			</div>
 			<div class="col-md-12" style="border-top:1px solid #eee; padding:10px; padding-bottom: 30px;">
 				<button class="btn btn-default pull-right" ng-click="setForm(0)">Cancelar</button>

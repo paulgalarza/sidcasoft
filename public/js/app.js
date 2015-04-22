@@ -55,6 +55,30 @@
 			{status:2,descripcion:"Activo"}
 		];
 
+		dataService.getUsuarioRAP().then(function(usuarioRAP){
+			$scope.usuarioRAP = usuarioRAP;
+		});
+
+		dataService.getUsuarioRCP().then(function(usuarioRCP){
+			$scope.usuarioRCP = usuarioRCP;
+		});
+
+		dataService.getUsuarioAnalista().then(function(usuarioAnalista){
+			$scope.usuarioAnalista = usuarioAnalista;
+		});
+
+		dataService.getUsuarioArquitecto().then(function(usuarioArquitecto){
+			$scope.usuarioArquitecto = usuarioArquitecto;
+		});
+
+		dataService.getUsuarioDesarrollador().then(function(usuarioDesarrollador){
+			$scope.usuarioDesarrollador = usuarioDesarrollador;
+		});
+
+		dataService.getUsuarioTester().then(function(usuarioTester){
+			$scope.usuarioTester = usuarioTester;
+		});
+
 		$scope.removeRecurso = function(recurso){
 			$scope.proyecto.recursos.splice($scope.proyecto.recursos.indexOf(recurso));
 		};
@@ -98,6 +122,12 @@
 	    		recursos:[],
 	    		idProceso:null,
 	    		status:1,
+	    		usuarioRAP:null,
+	    		usuarioRCP:null,
+	    		usuarioAnalista:null,
+	    		usuarioArquitecto:null,
+	    		usuarioDesarrollador:null,
+	    		usuarioTester:null,
 	    		idCliente:0,
 	    	};
 	    	$scope.SeAgrega = true;
@@ -645,6 +675,12 @@
 				//addProyecto:addProyecto,
 				getProyectos:getProyectos,
 				removeProyecto:removeProyecto,
+				getUsuarioRAP:getUsuarioRAP,
+				getUsuarioRCP:getUsuarioRCP,
+				getUsuarioAnalista:getUsuarioAnalista,
+				getUsuarioArquitecto:getUsuarioArquitecto,
+				getUsuarioDesarrollador:getUsuarioDesarrollador,
+				getUsuarioTester:getUsuarioTester,
 				getClientes:getClientes,
 				getProcesos:getProcesos,
 				getRecursos:getRecursos,
@@ -664,6 +700,54 @@
 				editCliente:editCliente,
 				removeCliente:removeCliente
 			});
+
+			function getUsuarioRAP () {
+				return $http({
+					method:'get',
+					url:'usuariorap/search',
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			function getUsuarioRCP () {
+				return $http({
+					method:'get',
+					url:'usuariorcp/search',
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			function getUsuarioAnalista () {
+				return $http({
+					method:'get',
+					url:'usuarioanalista/search',
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			function getUsuarioArquitecto () {
+				return $http({
+					method:'get',
+					url:'usuarioarquitecto/search',
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			function getUsuarioDesarrollador () {
+				return $http({
+					method:'get',
+					url:'usuariodesarrollador/search',
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			function getUsuarioTester () {
+				return $http({
+					method:'get',
+					url:'usuariotester/search',
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
 
 			function removeCliente(id){
 				return $http({
