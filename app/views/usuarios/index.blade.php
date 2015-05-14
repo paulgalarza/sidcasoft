@@ -36,7 +36,7 @@
 				<td>@{{row.domicilio}}</td>
 				<td>@{{row.telefono}}</td>
 				<td>@{{getStatus(row.estatus)}}</td>
-				<td>@{{getNombreProyecto(row.ProyectoAsignado)}}</td>
+				<td>@{{getNombreProy(row.ProyectoAsignado)}}</td>
 				<td>
 					<button type="button" class="btn btn-sm btn-default" ng-click="editUsuario(row.idUsuario)"><i class="glyphicon glyphicon-pencil"></i></button>
 					<button type="button" class="btn btn-sm btn-danger" ng-click="removeUsuario(row.idUsuario)"><i class="glyphicon glyphicon-remove-circle"></i></button></td>

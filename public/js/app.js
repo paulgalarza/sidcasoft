@@ -254,7 +254,6 @@
 			{status:1,descripcion:"Activo"},
 			{status:0,descripcion:"Inactivo"}
 		];
-		$scope.nombreProy = [];
 
 		dataService.getUsuarios().then(function(usuarios){
 	    	$scope.usuarios = usuarios;
@@ -269,13 +268,15 @@
 	    }
 
 	    //Función que regresa el nombre del proyecto recibiendo el ID del mismo
-	    $scope.getNombreProyecto = function(NumProyecto)
+	    $scope.getNombreProy = function(NumProyecto)
 	    {
+	    	//return NumProyecto;
 	    	if(NumProyecto!=null)
 	    	{
 		    	dataService.getNombreProyecto(NumProyecto).then(function(nombreProy){
-		    		$scope.nombreProy = nombreProy;
+		    		return nombreProy;
 		    	});
+		    	//return NumProyecto;
 	    	}
 	    }
 
@@ -294,6 +295,7 @@
 	    		password:'',
 	    		idTipoUsuario:null,
 	    		estatus:1,
+	    		ProyectoAsignado:0,
 	    	};
 	    	$scope.SeAgrega = true;
 	    	console.log($scope.SeAgrega);
@@ -765,8 +767,8 @@
 			function getNombreProyecto(NumProy){
 				return $http({
 					method:'get',
-					url:'buscarnombreproy/'+NumProy,
-					params:{},
+					url:'clientes/search/'+NumProy,
+					params:{}
 				}).then(handleSuccess,handleError);
 			}
 

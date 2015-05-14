@@ -139,23 +139,15 @@ Route::group(array('before' => 'auth'), function()
 		);
 	});
 
-	Route::get('buscarnombreproy/{NumProy}',function($NumProy){
-		//if($NumProy != null)
-		//{
-			return Response::json(
-				DB::table('usuarios')
-					->join('proyecto','usuarios.ProyectoAsignado','=','proyecto.idProyecto')
-					->select('proyecto.nombre AS nombre')
-					->where('proyecto.idProyecto','=', $NumProy)
-					->get()
-			);
-			/*return Response::json(
-				DB::table('proyecto')
-					->select('proyecto.nombre')
-					->where('proyecto.idProyecto','=', $NumProy)
-					->get()
-			);*/
-		//}
+	Route::get('clientes/search/{NumProy}',function($NumProy){
+		return $NumProy;
+		/*return Response::json(
+			DB::table('usuarios')
+				->join('proyecto','usuarios.ProyectoAsignado','=','proyecto.idProyecto')
+				->select('proyecto.nombre AS nombre')
+				->where('proyecto.idProyecto','=', $NumProy)
+				->get()
+		);*/
 	});
 
 	Route::get('tipousuario/search',function(){
