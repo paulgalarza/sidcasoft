@@ -254,6 +254,7 @@
 			{status:1,descripcion:"Activo"},
 			{status:0,descripcion:"Inactivo"}
 		];
+		$scope.nombreProy = [];
 
 		dataService.getUsuarios().then(function(usuarios){
 	    	$scope.usuarios = usuarios;
@@ -265,6 +266,17 @@
 
 	    $scope.getStatus = function(Status){
 	    	return Status ? 'Activo' : 'Baja';
+	    }
+
+	    //Función que regresa el nombre del proyecto recibiendo el ID del mismo
+	    $scope.getNombreProyecto = function(NumProyecto)
+	    {
+	    	if(NumProyecto!=null)
+	    	{
+		    	dataService.getNombreProyecto(NumProyecto).then(function(nombreProy){
+		    		$scope.nombreProy = nombreProy;
+		    	});
+	    	}
 	    }
 
 	    $scope.isSelected = function(idUsuario){
@@ -681,6 +693,7 @@
 				getUsuarioArquitecto:getUsuarioArquitecto,
 				getUsuarioDesarrollador:getUsuarioDesarrollador,
 				getUsuarioTester:getUsuarioTester,
+				getNombreProyecto:getNombreProyecto,
 				getClientes:getClientes,
 				getProcesos:getProcesos,
 				getRecursos:getRecursos,
@@ -749,6 +762,14 @@
 				}).then(handleSuccess,handleError);
 			}
 
+			function getNombreProyecto(NumProy){
+				return $http({
+					method:'get',
+					url:'buscarnombreproy/'+NumProy,
+					params:{},
+				}).then(handleSuccess,handleError);
+			}
+
 			function removeCliente(id){
 				return $http({
 					method:'DELETE',
@@ -771,7 +792,6 @@
 					url:'clientes/add',
 					params:cliente,
 				}).then(handleSuccess,handleError);
-
 			}
 
 			function removeEmpresa(id){

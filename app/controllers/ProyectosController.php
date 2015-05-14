@@ -26,6 +26,14 @@ class ProyectosController extends BaseController {
 		$proyecto->idRecMat = 1;
 		$proyecto->save();
 
+		/* http://laravel.com/docs/4.2/queries#updates
+
+		DB::table('usuarios')
+            ->where('idUsuario', Input::get('usuarioTester');)
+            ->update(array('ProyectoAsignado' => 1));
+            
+        */
+
 		return Response::json(
 			DB::table('proyecto')
 				->join('cliente','proyecto.idCliente','=','cliente.idCliente')
