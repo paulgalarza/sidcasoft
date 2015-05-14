@@ -14,6 +14,7 @@
 				<th st-sort="domicilio">Domicilio</th>
 				<th st-sort="telefono">Teléfono</th>
 				<th st-sort="status">Estatus</th>
+				<th st-sort="proyecto">Proyecto actual</th>
 				<th></th>
 			</tr>
 			<tr>
@@ -35,6 +36,7 @@
 				<td>@{{row.domicilio}}</td>
 				<td>@{{row.telefono}}</td>
 				<td>@{{getStatus(row.estatus)}}</td>
+				<td>@{{getNombreProyecto(row.ProyectoAsignado)}}</td>
 				<td>
 					<button type="button" class="btn btn-sm btn-default" ng-click="editUsuario(row.idUsuario)"><i class="glyphicon glyphicon-pencil"></i></button>
 					<button type="button" class="btn btn-sm btn-danger" ng-click="removeUsuario(row.idUsuario)"><i class="glyphicon glyphicon-remove-circle"></i></button></td>
