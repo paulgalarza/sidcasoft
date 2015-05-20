@@ -47,5 +47,4 @@ class UsuariosController extends BaseController {
 				->get()
 		);
 	}
-	
 }

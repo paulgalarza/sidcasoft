@@ -270,14 +270,30 @@
 	    //Función que regresa el nombre del proyecto recibiendo el ID del mismo
 	    $scope.getNombreProy = function(NumProyecto)
 	    {
-	    	//return NumProyecto;
 	    	if(NumProyecto!=null)
 	    	{
-		    	dataService.getNombreProyecto(NumProyecto).then(function(nombreProy){
-		    		return nombreProy;
-		    	});
-		    	//return NumProyecto;
+	    		var parametros = "opc=obtenNombreProy"+"&numproy="+NumProyecto+"&id="+Math.random();
+	    		$.ajax({
+					cache:false,
+					url: "data/obtenernombre.php",
+					type: "POST",
+					dataType: "json",
+					data: parametros,
+					success: function(response){
+						if(response.respuesta == true) 
+						{
+							console.log("Se accedió al archivo con éxito");
+						}
+						else
+							console.log("Error al intentar acceder al archivo");
+					}
+				});
+		    	/*dataService.getNombreProyecto(NumProyecto).then(function(nombreProy){
+		    		$scope.ProyectoAsignado = nombreProy;
+		    	});*/
+		    	return NumProyecto;
 	    	}
+
 	    }
 
 	    $scope.isSelected = function(idUsuario){
