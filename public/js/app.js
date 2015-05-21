@@ -283,15 +283,19 @@
 						if(response.respuesta == true) 
 						{
 							console.log("Se accedió al archivo con éxito");
+							return response.nombre;
 						}
 						else
 							console.log("Error al intentar acceder al archivo");
+					},
+					error: function(xhr, ajaxOptions, x){
+						console.log("Error de conexión");
 					}
 				});
 		    	/*dataService.getNombreProyecto(NumProyecto).then(function(nombreProy){
 		    		$scope.ProyectoAsignado = nombreProy;
 		    	});*/
-		    	return NumProyecto;
+		    	//return NumProyecto;
 	    	}
 
 	    }
