@@ -10,9 +10,6 @@
     <link rel="stylesheet" href="css/snap.css" >
   </head>
   <body>
-    <div class="header">
-      <img src="images/headertec.jpg" alt="" class="img-header"/>
-    </div>
     <nav-bar></nav-bar>
     <div ng-view></div>
 
