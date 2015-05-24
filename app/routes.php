@@ -32,7 +32,9 @@ Route::group(array('before' => 'auth'), function()
 		return Response::json(
 			DB::table('proyecto')
 				->join('cliente','proyecto.idCliente','=','cliente.idCliente')
-				->select('proyecto.*','cliente.nombre AS nombreCliente')
+        ->join('empresa','proyecto.idEmpresa','=','empresa.idEmpresa')
+        ->join('estatus','proyecto.idEstatus','=','estatus.idEstatus')
+				->select('proyecto.*','cliente.nombre AS cliente','empresa.nombre as empresa','estatus.nombre as estatus')
 				->get()
 		);
 	});

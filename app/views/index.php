@@ -19,7 +19,7 @@
     <script src="js/vendor/angular.js"></script>
     <script src="js/vendor/angular-route.js"></script>
 
-    <script src="js/app.js"/></script>
+    <script src="js/appp.js"/></script>
     <script src="js/routes.js"/></script>
     <script src="js/vendor/smart-table.min.js"/></script>
     <script src="js/vendor/ui-bootstrap.min.js"/></script>
