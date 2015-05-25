@@ -847,4 +847,3 @@ var app = angular.module('sidcasoft',['ngRoute','smart-table','ui.bootstrap']);
 		}
 	)
 
-})();
