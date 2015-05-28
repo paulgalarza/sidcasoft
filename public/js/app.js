@@ -268,11 +268,12 @@
 	    }
 
 	    //Función que regresa el nombre del proyecto recibiendo el ID del mismo
-	    $scope.getNombreProy = function(NumProyecto)
+	    $scope.getNombreProy = function(NumUsuario, NumProyecto)
 	    {
 	    	if(NumProyecto!=null)
 	    	{
 	    		var parametros = "opc=obtenNombreProy"+"&numproy="+NumProyecto+"&id="+Math.random();
+
 	    		$.ajax({
 					cache:false,
 					url: "data/obtenernombre.php",
@@ -283,6 +284,7 @@
 						if(response.respuesta == true) 
 						{
 							console.log("Se accedió al archivo con éxito");
+							$("#" + NumUsuario).html(response.nombre);
 							return response.nombre;
 						}
 						else
