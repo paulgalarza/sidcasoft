@@ -79,6 +79,31 @@
 			$scope.usuarioTester = usuarioTester;
 		});
 
+		//Editar tipos de usuario
+		dataService.getUsuarioRAP2().then(function(usuarioRAP){
+			$scope.usuarioRAP = usuarioRAP;
+		});
+
+		dataService.getUsuarioRCP2().then(function(usuarioRCP){
+			$scope.usuarioRCP = usuarioRCP;
+		});
+
+		dataService.getUsuarioAnalista2().then(function(usuarioAnalista){
+			$scope.usuarioAnalista = usuarioAnalista;
+		});
+
+		dataService.getUsuarioArquitecto2().then(function(usuarioArquitecto){
+			$scope.usuarioArquitecto = usuarioArquitecto;
+		});
+
+		dataService.getUsuarioDesarrollador2().then(function(usuarioDesarrollador){
+			$scope.usuarioDesarrollador = usuarioDesarrollador;
+		});
+
+		dataService.getUsuarioTester2().then(function(usuarioTester){
+			$scope.usuarioTester = usuarioTester;
+		});
+
 		$scope.removeRecurso = function(recurso){
 			$scope.proyecto.recursos.splice($scope.proyecto.recursos.indexOf(recurso));
 		};
@@ -284,7 +309,7 @@
 						if(response.respuesta == true) 
 						{
 							console.log("Se accedió al archivo con éxito");
-							$("#" + NumUsuario).html(response.nombre);
+							$("." + NumUsuario).html(response.nombre);
 							return response.nombre;
 						}
 						else
@@ -717,6 +742,12 @@
 				getUsuarioArquitecto:getUsuarioArquitecto,
 				getUsuarioDesarrollador:getUsuarioDesarrollador,
 				getUsuarioTester:getUsuarioTester,
+				getUsuarioRAP2:getUsuarioRAP2,
+				getUsuarioRCP2:getUsuarioRCP2,
+				getUsuarioAnalista2:getUsuarioAnalista2,
+				getUsuarioArquitecto2:getUsuarioArquitecto2,
+				getUsuarioDesarrollador2:getUsuarioDesarrollador2,
+				getUsuarioTester2:getUsuarioTester2,
 				getNombreProyecto:getNombreProyecto,
 				getClientes:getClientes,
 				getProcesos:getProcesos,
@@ -785,6 +816,57 @@
 					params:{}
 				}).then(handleSuccess,handleError);
 			}
+
+			//Editar tipos de usuario
+			function getUsuarioRAP2 () {
+				return $http({
+					method:'get',
+					url:'usuariorap2/search',
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			function getUsuarioRCP2 () {
+				return $http({
+					method:'get',
+					url:'usuariorcp2/search',
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			function getUsuarioAnalista2 () {
+				return $http({
+					method:'get',
+					url:'usuarioanalista2/search',
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			function getUsuarioArquitecto2 () {
+				return $http({
+					method:'get',
+					url:'usuarioarquitecto2/search',
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			function getUsuarioDesarrollador2 () {
+				return $http({
+					method:'get',
+					url:'usuariodesarrollador2/search',
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			function getUsuarioTester2 () {
+				return $http({
+					method:'get',
+					url:'usuariotester2/search',
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			//Continúa...
 
 			function getNombreProyecto(NumProy){
 				return $http({

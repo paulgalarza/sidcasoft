@@ -64,6 +64,11 @@ class ProyectosController extends BaseController {
 		$proyecto->idRecMat = 1;
 		$proyecto->save();
 
+		/*DB::table('usuarios')
+			->where('idUsuario', Input::get('usuarioRAP'))
+			->update(array('ProyectoAsignado') => $id);
+			*/
+
 		return Response::json(
 			DB::table('proyecto')
 				->join('cliente','proyecto.idCliente','=','cliente.idCliente')
