@@ -80,27 +80,27 @@
 		});
 
 		//Editar tipos de usuario
-		dataService.getUsuarioRAP2().then(function(usuarioRAP){
+		dataService.getUsuarioRAP2($scope.proyecto.idProyecto).then(function(usuarioRAP2){
 			$scope.usuarioRAP = usuarioRAP;
 		});
 
-		dataService.getUsuarioRCP2().then(function(usuarioRCP){
+		dataService.getUsuarioRCP2($scope.proyecto.idProyecto).then(function(usuarioRCP2){
 			$scope.usuarioRCP = usuarioRCP;
 		});
 
-		dataService.getUsuarioAnalista2().then(function(usuarioAnalista){
+		dataService.getUsuarioAnalista2($scope.proyecto.idProyecto).then(function(usuarioAnalista2){
 			$scope.usuarioAnalista = usuarioAnalista;
 		});
 
-		dataService.getUsuarioArquitecto2().then(function(usuarioArquitecto){
+		dataService.getUsuarioArquitecto2($scope.proyecto.idProyecto).then(function(usuarioArquitecto2){
 			$scope.usuarioArquitecto = usuarioArquitecto;
 		});
 
-		dataService.getUsuarioDesarrollador2().then(function(usuarioDesarrollador){
+		dataService.getUsuarioDesarrollador2($scope.proyecto.idProyecto).then(function(usuarioDesarrollador2){
 			$scope.usuarioDesarrollador = usuarioDesarrollador;
 		});
 
-		dataService.getUsuarioTester2().then(function(usuarioTester){
+		dataService.getUsuarioTester2($scope.proyecto.idProyecto).then(function(usuarioTester2){
 			$scope.usuarioTester = usuarioTester;
 		});
 
@@ -818,50 +818,50 @@
 			}
 
 			//Editar tipos de usuario
-			function getUsuarioRAP2 () {
+			function getUsuarioRAP2 (id) {
 				return $http({
 					method:'get',
-					url:'usuariorap2/search',
+					url:'usuariorap2/search/'+id,
 					params:{}
 				}).then(handleSuccess,handleError);
 			}
 
-			function getUsuarioRCP2 () {
+			function getUsuarioRCP2 (id) {
 				return $http({
 					method:'get',
-					url:'usuariorcp2/search',
+					url:'usuariorcp2/search/'+id,
 					params:{}
 				}).then(handleSuccess,handleError);
 			}
 
-			function getUsuarioAnalista2 () {
+			function getUsuarioAnalista2 (id) {
 				return $http({
 					method:'get',
-					url:'usuarioanalista2/search',
+					url:'usuarioanalista2/search/'+id,
 					params:{}
 				}).then(handleSuccess,handleError);
 			}
 
-			function getUsuarioArquitecto2 () {
+			function getUsuarioArquitecto2 (id) {
 				return $http({
 					method:'get',
-					url:'usuarioarquitecto2/search',
+					url:'usuarioarquitecto2/search/'+id,
 					params:{}
 				}).then(handleSuccess,handleError);
 			}
 
-			function getUsuarioDesarrollador2 () {
+			function getUsuarioDesarrollador2 (id) {
 				return $http({
 					method:'get',
-					url:'usuariodesarrollador2/search',
+					url:'usuariodesarrollador2/search/'+id,
 					params:{}
 				}).then(handleSuccess,handleError);
 			}
 
-			function getUsuarioTester2 () {
+			function getUsuarioTester2 (id) {
 				return $http({
 					method:'get',
-					url:'usuariotester2/search',
+					url:'usuariotester2/search/'+id,
 					params:{}
 				}).then(handleSuccess,handleError);
 			}

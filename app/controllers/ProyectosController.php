@@ -54,12 +54,12 @@ class ProyectosController extends BaseController {
 		$proyecto->idProceso = Input::get('idProceso');
 		$proyecto->costoTotal = Input::get('costoTotal');
 		$proyecto->status = Input::get('status');
-		$proyecto->usuarioRAP = Input::get('usuarioRAP');
-		$proyecto->usuarioRCP = Input::get('usuarioRCP');
-		$proyecto->usuarioAnalista = Input::get('usuarioAnalista');
-		$proyecto->usuarioArquitecto = Input::get('usuarioArquitecto');
-		$proyecto->usuarioDesarrollador = Input::get('usuarioDesarrollador');
-		$proyecto->usuarioTester = Input::get('usuarioTester');
+		$proyecto->usuarioRAP = Input::get('usuarioRAP2');
+		$proyecto->usuarioRCP = Input::get('usuarioRCP2');
+		$proyecto->usuarioAnalista = Input::get('usuarioAnalista2');
+		$proyecto->usuarioArquitecto = Input::get('usuarioArquitecto2');
+		$proyecto->usuarioDesarrollador = Input::get('usuarioDesarrollador2');
+		$proyecto->usuarioTester = Input::get('usuarioTester2');
 		//$proyecto->estatus = Input::get('idEstatus');
 		$proyecto->idRecMat = 1;
 		$proyecto->save();

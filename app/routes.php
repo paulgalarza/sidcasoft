@@ -111,62 +111,68 @@ Route::group(array('before' => 'auth'), function()
 	});
 
 	//Tipos de usuario en el formulario de Editar
-	Route::get('usuariorap2/search',function(){
+	Route::get('usuariorap2/search/{id}',function($id){
 		return Response::json(
 			DB::table('usuarios')
 				->select('usuarios.nombre', 'usuarios.idUsuario as usuarioRAP')
 				->where('usuarios.idTipoUsuario', '=', 2)
 				->where('usuarios.ProyectoAsignado', '=', null)
+				->orWhere('usuarios.ProyectoAsignado', '=', $id)
 				->get()
 		);
 	});
 
-	Route::get('usuariorcp2/search',function(){
+	Route::get('usuariorcp2/search/{id}',function($id){
 		return Response::json(
 			DB::table('usuarios')
 				->select('usuarios.nombre', 'usuarios.idUsuario as usuarioRCP')
 				->where('usuarios.idTipoUsuario', '=', 1)
 				->where('usuarios.ProyectoAsignado', '=', null)
+				->orWhere('usuarios.ProyectoAsignado', '=', $id)
 				->get()
 		);
 	}); 
 
-	Route::get('usuarioanalista2/search',function(){
+	Route::get('usuarioanalista2/search/{id}',function($id){
 		return Response::json(
 			DB::table('usuarios')
 				->select('usuarios.nombre', 'usuarios.idUsuario as usuarioAnalista')
 				->where('usuarios.idTipoUsuario', '=', 3)
 				->where('usuarios.ProyectoAsignado', '=', null)
+				->orWhere('usuarios.ProyectoAsignado', '=', $id)
 				->get()
 		);
 	});
 
-	Route::get('usuarioarquitecto2/search',function(){
+	Route::get('usuarioarquitecto2/search/{id}',function($id){
 		return Response::json(
 			DB::table('usuarios')
 				->select('usuarios.nombre', 'usuarios.idUsuario as usuarioArquitecto')
 				->where('usuarios.idTipoUsuario', '=', 4)
 				->where('usuarios.ProyectoAsignado', '=', null)
+				->orWhere('usuarios.ProyectoAsignado', '=', $id)
 				->get()
 		);
 	});
 
-	Route::get('usuariodesarrollador2/search',function(){
+	Route::get('usuariodesarrollador2/search/{id}',function($id){
 		return Response::json(
 			DB::table('usuarios')
 				->select('usuarios.nombre', 'usuarios.idUsuario as usuarioDesarrollador')
 				->where('usuarios.idTipoUsuario', '=', 5)
 				->where('usuarios.ProyectoAsignado', '=', null)
+				->orWhere('usuarios.ProyectoAsignado', '=', $id)
 				->get()
 		);
 	});
 
-	Route::get('usuariotester2/search',function(){
+	Route::get('usuariotester2/search/{id}',function($id){
 		return Response::json(
 			DB::table('usuarios')
-				->select('usuarios.nombre', 'usuarios.idUsuario as usuarioTester', 'usuarios.ProyectoAsignado as proyecto')
+				->select('usuarios.nombre', 'usuarios.idUsuario as usuarioTester')
 				->where('usuarios.idTipoUsuario', '=', 6)
 				->where('usuarios.ProyectoAsignado', '=', null)
+				->orWhere('usuarios.ProyectoAsignado', '=', $id)
 				->get()
 				//->orWhere('usuarios.ProyectoAsignado', '=', 9)
 		);
