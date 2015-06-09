@@ -101,7 +101,7 @@
 		});
 
 		dataService.getUsuarioTester2($scope.proyecto.idProyecto).then(function(usuarioTester2){
-			$scope.usuarioTester = usuarioTester2;
+			$scope.usuarioTester2 = usuarioTester2;
 		});
 
 		$scope.removeRecurso = function(recurso){

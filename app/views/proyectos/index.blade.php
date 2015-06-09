@@ -248,7 +248,7 @@
 				<div class="form-group row" ng-show="SeEdita" ng-hide="SeAgrega">
 					<label class="control-label col-md-4">Tester:</label>
 					<div class="col-md-8">
-						<select required class="form-control" name="usuarioTester2" ng-model="proyecto.usuarioTester" ng-options="p.usuarioTester as p.nombre for p in usuarioTester">
+						<select required class="form-control" name="usuarioTester2" ng-model="proyecto.usuarioTester" ng-options="p.usuarioTester2 as p.nombre for p in usuarioTester2">
 							<option value="" disabled="disabled" style="display:none">Seleccione</option>
 						</select>
 					</div>
