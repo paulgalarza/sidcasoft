@@ -174,7 +174,6 @@ Route::group(array('before' => 'auth'), function()
 				->where('usuarios.ProyectoAsignado', '=', null)
 				->orWhere('usuarios.ProyectoAsignado', '=', $id)
 				->get()
-				//->orWhere('usuarios.ProyectoAsignado', '=', 9)
 		);
 	});
 
