@@ -81,23 +81,23 @@
 
 		//Editar tipos de usuario
 		dataService.getUsuarioRAP2($scope.proyecto.idProyecto).then(function(usuarioRAP2){
-			$scope.usuarioRAP = usuarioRAP2;
+			$scope.usuarioRAP2 = usuarioRAP2;
 		});
 
 		dataService.getUsuarioRCP2($scope.proyecto.idProyecto).then(function(usuarioRCP2){
-			$scope.usuarioRCP = usuarioRCP2;
+			$scope.usuarioRCP2 = usuarioRCP2;
 		});
 
 		dataService.getUsuarioAnalista2($scope.proyecto.idProyecto).then(function(usuarioAnalista2){
-			$scope.usuarioAnalista = usuarioAnalista2;
+			$scope.usuarioAnalista2 = usuarioAnalista2;
 		});
 
 		dataService.getUsuarioArquitecto2($scope.proyecto.idProyecto).then(function(usuarioArquitecto2){
-			$scope.usuarioArquitecto = usuarioArquitecto2;
+			$scope.usuarioArquitecto2 = usuarioArquitecto2;
 		});
 
 		dataService.getUsuarioDesarrollador2($scope.proyecto.idProyecto).then(function(usuarioDesarrollador2){
-			$scope.usuarioDesarrollador = usuarioDesarrollador2;
+			$scope.usuarioDesarrollador2 = usuarioDesarrollador2;
 		});
 
 		dataService.getUsuarioTester2($scope.proyecto.idProyecto).then(function(usuarioTester2){
