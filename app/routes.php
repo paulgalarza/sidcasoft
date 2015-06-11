@@ -111,6 +111,7 @@ Route::group(array('before' => 'auth'), function()
 	});
 
 	//Tipos de usuario en el formulario de Editar
+	// --- REVISAR ESTAS CONSULTAS, TIENEN UN FUNCIONAMIENTO RARO ---
 	Route::get('usuariorap2/search/{id}',function($id){
 		return Response::json(
 			DB::table('usuarios')
