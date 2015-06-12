@@ -71,11 +71,21 @@
 						<span class="gray-color pull-right">@{{500-proyecto.descripcion.length}} Caracteres restantes</span>
 					</div>
 				</div>
+			<!--
 				<div class="form-group row">
 					<label class="control-label col-md-4">Cliente:</label>
 					<div class="col-md-8">
 						<input required type="text" ng-model="cliente" placeholder="" typeahead="cliente as cliente.nombre for cliente in getClientes($viewValue)" typeahead-loading="loadingClientes" class="form-control">
 	    				<i ng-show="loadingClientes" class="glyphicon glyphicon-refresh"></i>
+					</div>
+				</div>
+			-->
+				<div class="form-group row">
+					<label class="control-label col-md-4">Cliente:</label>
+					<div class="col-md-8">
+						<select required class="form-control" name="nombreCliente" ng-model="proyecto.idCliente" ng-options="c.idCliente as c.nombre for c in clientes">
+							<option value="" disabled="disabled" style="display:none">Seleccione</option>
+						</select>
 					</div>
 				</div>
 				<div class="form-group row">
@@ -208,7 +218,7 @@
 				<div class="form-group row" ng-show="SeEdita" ng-hide="SeAgrega">
 					<label class="control-label col-md-4">RAP:</label>
 					<div class="col-md-8">
-						<select class="form-control" name="usuarioRAP2" ng-model="proyecto.usuarioRAP" ng-options="p.usuarioRAP2 as p.nombre for p in usuarioRAP2">
+						<select class="form-control" name="usuarioRAP2" ng-model="proyecto.usuarioRAP" ng-options="p.usuarioRAP as p.nombre for p in usuarioRAP2">
 							<option value="" disabled="disabled" style="display:none">Seleccione</option>
 						</select>
 					</div>
@@ -216,7 +226,7 @@
 				<div class="form-group row" ng-show="SeEdita" ng-hide="SeAgrega">
 					<label class="control-label col-md-4">RCP:</label>
 					<div class="col-md-8">
-						<select class="form-control" name="usuarioRCP2" ng-model="proyecto.usuarioRCP" ng-options="p.usuarioRCP2 as p.nombre for p in usuarioRCP2">
+						<select class="form-control" name="usuarioRCP2" ng-model="proyecto.usuarioRCP" ng-options="p.usuarioRCP as p.nombre for p in usuarioRCP2">
 							<option value="" disabled="disabled" style="display:none">Seleccione</option>
 						</select>
 					</div>
@@ -224,7 +234,7 @@
 				<div class="form-group row" ng-show="SeEdita" ng-hide="SeAgrega">
 					<label class="control-label col-md-4">Analista:</label>
 					<div class="col-md-8">
-						<select class="form-control" name="usuarioAnalista2" ng-model="proyecto.usuarioAnalista" ng-options="p.usuarioAnalista2 as p.nombre for p in usuarioAnalista2">
+						<select class="form-control" name="usuarioAnalista2" ng-model="proyecto.usuarioAnalista" ng-options="p.usuarioAnalista as p.nombre for p in usuarioAnalista2">
 							<option value="" disabled="disabled" style="display:none">Seleccione</option>
 						</select>
 					</div>
@@ -232,7 +242,7 @@
 				<div class="form-group row" ng-show="SeEdita" ng-hide="SeAgrega">
 					<label class="control-label col-md-4">Arquitecto:</label>
 					<div class="col-md-8">
-						<select class="form-control" name="usuarioArquitecto2" ng-model="proyecto.usuarioArquitecto" ng-options="p.usuarioArquitecto2 as p.nombre for p in usuarioArquitecto2">
+						<select class="form-control" name="usuarioArquitecto2" ng-model="proyecto.usuarioArquitecto" ng-options="p.usuarioArquitecto as p.nombre for p in usuarioArquitecto2">
 							<option value="" disabled="disabled" style="display:none">Seleccione</option>
 						</select>
 					</div>
@@ -240,7 +250,7 @@
 				<div class="form-group row" ng-show="SeEdita" ng-hide="SeAgrega">
 					<label class="control-label col-md-4">Desarrollador:</label>
 					<div class="col-md-8">
-						<select class="form-control" name="usuarioDesarrollador2" ng-model="proyecto.usuarioDesarrollador" ng-options="p.usuarioDesarrollador2 as p.nombre for p in usuarioDesarrollador2">
+						<select class="form-control" name="usuarioDesarrollador2" ng-model="proyecto.usuarioDesarrollador" ng-options="p.usuarioDesarrollador as p.nombre for p in usuarioDesarrollador2">
 							<option value="" disabled="disabled" style="display:none">Seleccione</option>
 						</select>
 					</div>
@@ -248,7 +258,7 @@
 				<div class="form-group row" ng-show="SeEdita" ng-hide="SeAgrega">
 					<label class="control-label col-md-4">Tester:</label>
 					<div class="col-md-8">
-						<select class="form-control" name="usuarioTester2" ng-model="proyecto.usuarioTester" ng-options="p.usuarioTester2 as p.nombre for p in usuarioTester2">
+						<select class="form-control" name="usuarioTester2" ng-model="proyecto.usuarioTester" ng-options="p.usuarioTester as p.nombre for p in usuarioTester2">
 							<option value="" disabled="disabled" style="display:none">Seleccione</option>
 						</select>
 					</div>

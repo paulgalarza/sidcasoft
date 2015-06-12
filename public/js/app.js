@@ -98,11 +98,11 @@
 		    	$scope.openedFin = true;
 		};
 
-	    $scope.getClientes = function(nombre){
+	    /*$scope.getClientes = function(nombre){
 	    	return dataService.getClientes(nombre).then(function(clientes){
 	    		return clientes;
 	    	});
-	    }
+	    }*/
 
 	    $scope.getRecurso = function(descripcion){
 	    	return dataService.getRecursos(descripcion).then(function(recursos){
@@ -227,7 +227,7 @@
 	    }
 
 	    $scope.addProyecto = function(){
-	    	$scope.proyecto.idCliente = $scope.cliente.idCliente;
+	    	//$scope.proyecto.idCliente = $scope.cliente.idCliente;
 	    	if($scope.proyecto.idProyecto){
 	    		dataService.editProyecto($scope.proyecto).then(function(response){
 	    			console.log(response);
@@ -259,6 +259,10 @@
 
 		dataService.getEmpresas().then(function(empresas){
 			$scope.empresas = empresas;
+		});
+
+		dataService.getClientes().then(function(clientes){
+			$scope.clientes = clientes;
 		});
 	});
 
@@ -989,11 +993,19 @@
 				}).then(handleSuccess,handleError);
 			}
 
-			function getClientes(nombre){
+			/*function getClientes(nombre){
 				return $http({
 					method:'get',
 					url:nombre ? 'clientes/search/'+nombre:'clientes/search',
 					params:{},
+				}).then(handleSuccess,handleError);
+			}*/
+
+			function getClientes () {
+				return $http({
+					method:'get',
+					url:'clientes/search',
+					params:{}
 				}).then(handleSuccess,handleError);
 			}
 

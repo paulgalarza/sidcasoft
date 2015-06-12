@@ -231,6 +231,16 @@ Route::group(array('before' => 'auth'), function()
 		return View::make('clientes/index');
 	});
 
+	Route::get('clientes/search',function()
+	{
+		return Response::json(
+			DB::table('cliente')
+				->join('empresa','cliente.idEmpresa','=','empresa.idEmpresa')
+				->select('cliente.*','empresa.nombre AS nombreEmpresa')
+				->get()
+		);
+	});
+
 	Route::get('clientes/search/{nombre?}',function($nombre = ''){
 		if($nombre == ''){
 			return Response::json(
