@@ -98,11 +98,11 @@
 		    	$scope.openedFin = true;
 		};
 
-	    $scope.getClientes = function(nombre){
+	    /*$scope.getClientes = function(nombre){
 	    	return dataService.getClientes(nombre).then(function(clientes){
 	    		return clientes;
 	    	});
-	    }
+	    }*/
 
 	    $scope.getRecurso = function(descripcion){
 	    	return dataService.getRecursos(descripcion).then(function(recursos){
@@ -189,6 +189,30 @@
 	    	console.log($scope.SeEdita);
 	    	$scope.setProyecto(idProyecto);
 	    	$scope.formProyecto = 1;
+
+	    	dataService.getUsuarioRAP2(idProyecto).then(function(usuarioRAP2){
+				$scope.usuarioRAP2 = usuarioRAP2;
+			});
+
+			dataService.getUsuarioRCP2(idProyecto).then(function(usuarioRCP2){
+				$scope.usuarioRCP2 = usuarioRCP2;
+			});
+
+			dataService.getUsuarioAnalista2(idProyecto).then(function(usuarioAnalista2){
+				$scope.usuarioAnalista2 = usuarioAnalista2;
+			});
+
+			dataService.getUsuarioArquitecto2(idProyecto).then(function(usuarioArquitecto2){
+				$scope.usuarioArquitecto2 = usuarioArquitecto2;
+			});
+
+			dataService.getUsuarioDesarrollador2(idProyecto).then(function(usuarioDesarrollador2){
+				$scope.usuarioDesarrollador2 = usuarioDesarrollador2;
+			});
+
+	    	dataService.getUsuarioTester2(idProyecto).then(function(usuarioTester2){
+				$scope.usuarioTester2 = usuarioTester2;
+			});
 	    }
 
 	    $scope.guardaCambiosProyecto = function(idProyecto){
@@ -203,7 +227,7 @@
 	    }
 
 	    $scope.addProyecto = function(){
-	    	$scope.proyecto.idCliente = $scope.cliente.idCliente;
+	    	//$scope.proyecto.idCliente = $scope.cliente.idCliente;
 	    	if($scope.proyecto.idProyecto){
 	    		dataService.editProyecto($scope.proyecto).then(function(response){
 	    			console.log(response);
@@ -236,6 +260,10 @@
 		dataService.getEmpresas().then(function(empresas){
 			$scope.empresas = empresas;
 		});
+
+		dataService.getClientes().then(function(clientes){
+			$scope.clientes = clientes;
+		});
 	});
 
 	//USUARIOS CONTROLLER
@@ -267,6 +295,41 @@
 	    	return Status ? 'Activo' : 'Baja';
 	    }
 
+	    //Función que regresa el nombre del proyecto recibiendo el ID del mismo
+	    $scope.getNombreProy = function(NumUsuario, NumProyecto)
+	    {
+	    	if(NumProyecto!=null)
+	    	{
+	    		var parametros = "opc=obtenNombreProy"+"&numproy="+NumProyecto+"&id="+Math.random();
+
+	    		$.ajax({
+					cache:false,
+					url: "data/obtenernombre.php",
+					type: "POST",
+					dataType: "json",
+					data: parametros,
+					success: function(response){
+						if(response.respuesta == true) 
+						{
+							console.log("Se accedió al archivo con éxito");
+							$("." + NumUsuario).html(response.nombre);
+							return response.nombre;
+						}
+						else
+							console.log("Error al intentar acceder al archivo");
+					},
+					error: function(xhr, ajaxOptions, x){
+						console.log("Error de conexión");
+					}
+				});
+		    	/*dataService.getNombreProyecto(NumProyecto).then(function(nombreProy){
+		    		$scope.ProyectoAsignado = nombreProy;
+		    	});*/
+		    	//return NumProyecto;
+	    	}
+
+	    }
+
 	    $scope.isSelected = function(idUsuario){
 			return $scope.usuario.idUsuario == idUsuario;
 		}
@@ -282,6 +345,7 @@
 	    		password:'',
 	    		idTipoUsuario:null,
 	    		estatus:1,
+	    		ProyectoAsignado:0,
 	    	};
 	    	$scope.SeAgrega = true;
 	    	console.log($scope.SeAgrega);
@@ -681,6 +745,13 @@
 				getUsuarioArquitecto:getUsuarioArquitecto,
 				getUsuarioDesarrollador:getUsuarioDesarrollador,
 				getUsuarioTester:getUsuarioTester,
+				getUsuarioRAP2:getUsuarioRAP2,
+				getUsuarioRCP2:getUsuarioRCP2,
+				getUsuarioAnalista2:getUsuarioAnalista2,
+				getUsuarioArquitecto2:getUsuarioArquitecto2,
+				getUsuarioDesarrollador2:getUsuarioDesarrollador2,
+				getUsuarioTester2:getUsuarioTester2,
+				getNombreProyecto:getNombreProyecto,
 				getClientes:getClientes,
 				getProcesos:getProcesos,
 				getRecursos:getRecursos,
@@ -749,6 +820,65 @@
 				}).then(handleSuccess,handleError);
 			}
 
+			//Editar tipos de usuario
+			function getUsuarioRAP2 (id) {
+				return $http({
+					method:'get',
+					url:'usuariorap2/search/'+id,
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			function getUsuarioRCP2 (id) {
+				return $http({
+					method:'get',
+					url:'usuariorcp2/search/'+id,
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			function getUsuarioAnalista2 (id) {
+				return $http({
+					method:'get',
+					url:'usuarioanalista2/search/'+id,
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			function getUsuarioArquitecto2 (id) {
+				return $http({
+					method:'get',
+					url:'usuarioarquitecto2/search/'+id,
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			function getUsuarioDesarrollador2 (id) {
+				return $http({
+					method:'get',
+					url:'usuariodesarrollador2/search/'+id,
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			function getUsuarioTester2 (id) {
+				return $http({
+					method:'get',
+					url:'usuariotester2/search/'+id,
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
+			//Continúa...
+
+			function getNombreProyecto(NumProy){
+				return $http({
+					method:'get',
+					url:'clientes/search/'+NumProy,
+					params:{}
+				}).then(handleSuccess,handleError);
+			}
+
 			function removeCliente(id){
 				return $http({
 					method:'DELETE',
@@ -771,7 +901,6 @@
 					url:'clientes/add',
 					params:cliente,
 				}).then(handleSuccess,handleError);
-
 			}
 
 			function removeEmpresa(id){
@@ -864,11 +993,19 @@
 				}).then(handleSuccess,handleError);
 			}
 
-			function getClientes(nombre){
+			/*function getClientes(nombre){
 				return $http({
 					method:'get',
 					url:nombre ? 'clientes/search/'+nombre:'clientes/search',
 					params:{},
+				}).then(handleSuccess,handleError);
+			}*/
+
+			function getClientes () {
+				return $http({
+					method:'get',
+					url:'clientes/search',
+					params:{}
 				}).then(handleSuccess,handleError);
 			}
 
